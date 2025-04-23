@@ -1,7 +1,7 @@
 export type Questions = Record<QuestionCategory, Question | Question[]>
 
-interface Question {
-  title: string
+export interface Question {
+  question: string
   answers: [string, string, string]
 }
 

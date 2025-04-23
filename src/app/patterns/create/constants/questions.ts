@@ -1,8 +1,8 @@
 import { Questions } from '../types'
 
-export const questions: Questions = {
+export const questions = {
   Red1: {
-    title: '당신에게 어떤 경험이 가장 깊게 남았나요?',
+    question: '당신에게 어떤 경험이 가장 깊게 남았나요?',
     answers: [
       '그 사람과의 관계에서 있었던 감정이 아직도 기억나요.',
       '몸이 아팠던 순간이나 감각이 강했던 기억이 가장 생생해요.',
@@ -11,7 +11,7 @@ export const questions: Questions = {
   },
   Red2: [
     {
-      title: '사람과의 관계에서 어떤 경험이 가장 선명하게 남아 있나요?',
+      question: '사람과의 관계에서 어떤 경험이 가장 선명하게 남아 있나요?',
       answers: [
         '사람이 떠날까 봐 불안했던 감정이 오래 남아 있다.',
         '상대와 너무 가까워지는 게 오히려 불편했던 순간이 기억에 남는다.',
@@ -19,7 +19,7 @@ export const questions: Questions = {
       ],
     },
     {
-      title:
+      question:
         '인상 깊은 신체적 경험 중 가장 강렬했던 순간은 어떻게 기억되고 있나요?',
       answers: [
         '그때의 통증이나 불편함이 몸에 그대로 남아 있는 느낌이에요.',
@@ -28,7 +28,7 @@ export const questions: Questions = {
       ],
     },
     {
-      title: '당신에게 인상 깊은 특정 상황은 어디에 더 가까운가요?',
+      question: '당신에게 인상 깊은 특정 상황은 어디에 더 가까운가요?',
       answers: [
         '공간의 구조나 분위기, 혹은 날씨 같은 외부 환경이 내 감정이나 행동에 크게 영향을 주었던 기억이었어요.',
         '내가 말하진 않았어도, 내가 보게된 그 일이 내 안에 강하게 남아 있어요.',
@@ -37,7 +37,7 @@ export const questions: Questions = {
     },
   ],
   Green1: {
-    title:
+    question:
       '당신이 상황을 받아들이고 해석할 때 더 중요하게 생각하는 부분은 어느쪽에 더 가까운가요?',
     answers: [
       '나는 어떤 정보를 받아들일 때, ‘어떻게 이해하느냐’가 가장 중요해요.',
@@ -47,7 +47,7 @@ export const questions: Questions = {
   },
   Green2: [
     {
-      title: '당신은 어떤 식으로 상황을 받아들이고 이해하나요?',
+      question: '당신은 어떤 식으로 상황을 받아들이고 이해하나요?',
       answers: [
         '말이나 설명 없이도 그동안의 경험을 떠올리며 분위기나 느낌으로 판단할 때가 많아요.',
         '이유와 원리를 분석해서 명확히 이해하는 걸 선호해요.',
@@ -55,7 +55,7 @@ export const questions: Questions = {
       ],
     },
     {
-      title: '어떤 선택의 순간이 올 때, 당신은 어떤 방식으로 결정하나요?',
+      question: '어떤 선택의 순간이 올 때, 당신은 어떤 방식으로 결정하나요?',
       answers: [
         '여러 가지를 오래 고민하고, 충분히 따져보고 결정해요.',
         '느낌이 오면 빠르게 결정하고, 뒤돌아보지 않는 편이에요.',
@@ -63,7 +63,7 @@ export const questions: Questions = {
       ],
     },
     {
-      title:
+      question:
         '불편하거나 감정적인 상황에 마주쳤을 때, 당신은 어떻게 반응하나요?',
       answers: [
         '그 상황을 피하거나 회피하려고 해요. 생각도 안 하려는 편이에요.',
@@ -73,7 +73,7 @@ export const questions: Questions = {
     },
   ],
   Blue1: {
-    title:
+    question:
       '당신의 감정 표현이나 사고방식에 가장 큰 영향을 준 ‘문화적 배경’은 어떤 쪽에 더 가까운가요?',
     answers: [
       '나는 가족이나 학교, 사회에서 배운 교육 방식이 내 생각의 뼈대를 만들었다고 느껴요.',
@@ -83,7 +83,7 @@ export const questions: Questions = {
   },
   Blue2: [
     {
-      title: '당신은 어디에서 제일 영향을 받았나요?',
+      question: '당신은 어디에서 제일 영향을 받았나요?',
       answers: [
         '나는 어릴 적부터 가족의 말투나 태도, 감정 표현 방식에 많은 영향을 받았어요.',
         '학교나 선생님, 또래 집단에서 배운 행동 방식이 내 기준이 되었어요.',
@@ -91,7 +91,7 @@ export const questions: Questions = {
       ],
     },
     {
-      title:
+      question:
         'Q. 당신이 생각이나 행동을 결정할 때 가장 크게 작용한 기준은 어느 쪽에 가까운가요?',
       answers: [
         '나는 주변 사람들과의 분위기나 관습을 따르면서 자연스럽게 행동을 배웠어요.',
@@ -100,7 +100,7 @@ export const questions: Questions = {
       ],
     },
     {
-      title:
+      question:
         '당신이 자라온 ‘시대적 환경’ 중에서, 당신의 생각에 가장 영향을 준 건 어떤 쪽인가요?',
       answers: [
         '나는 내가 속한 세대의 분위기와 공통된 사고방식이 지금의 나를 만든 것 같아요.',
@@ -109,4 +109,4 @@ export const questions: Questions = {
       ],
     },
   ],
-}
+} satisfies Questions
