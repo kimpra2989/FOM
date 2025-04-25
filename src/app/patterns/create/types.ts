@@ -8,6 +8,6 @@ export interface QuestionType {
   answers: [string, string, string]
 }
 
-type Colors = 'Red' | 'Green' | 'Blue'
+export type QuestionColorType = 'Red' | 'Green' | 'Blue'
 type Layer = 1 | 2
-type QuestionCategory = `${Colors}${Layer}`
+type QuestionCategory = `${QuestionColorType}${Layer}`

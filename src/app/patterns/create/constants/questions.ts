@@ -1,4 +1,4 @@
-import { Questions } from '../types'
+import { QuestionsType } from '../types'
 
 export const questions = {
   Red1: {
@@ -109,4 +109,4 @@ export const questions = {
       ],
     },
   ],
-} satisfies Questions
+} satisfies QuestionsType

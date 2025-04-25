@@ -1,8 +1,8 @@
 'use client'
 
-import { ChangeEventHandler, FC, MouseEventHandler } from 'react'
+import { ChangeEventHandler, FC } from 'react'
 import { CarouselHookReturnType } from '../../../hooks/useCarousel'
-import { Question as QuestionType } from '../../../types'
+import { QuestionColorType, QuestionType } from '../../../types'
 import {
   answerContainerStyles,
   answerStyles,
@@ -14,23 +14,21 @@ import {
 interface Props extends QuestionType {
   scrollNext: CarouselHookReturnType['scrollNext']
   setAnswer: (value: number) => void
+  questionColor: QuestionColorType
 }
 
 const Question: FC<Props> = ({ question, answers, setAnswer, scrollNext }) => {
-  const handleAnswer: MouseEventHandler = (e) => {
-    if (e.target instanceof HTMLElement && e.target.tagName === 'INPUT') {
-      scrollNext()
-    }
-  }
-
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setAnswer(+e.target.value)
+    requestAnimationFrame(() => {
+      scrollNext()
+    })
   }
 
   return (
     <div className={slideStyles}>
       <legend className={questionStyles}>{question}</legend>
-      <fieldset className={answerContainerStyles} onClick={handleAnswer}>
+      <fieldset className={answerContainerStyles}>
         {answers.map((answer, idx) => (
           <label className={answerStyles} key={idx}>
             <input

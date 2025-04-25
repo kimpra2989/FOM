@@ -15,7 +15,6 @@ export const slideStyles = style([
     },
 
     flexDirection: 'column',
-    // gap : ''
 
     height: '100%',
     flex: `0 0 ${slideSize}`,
