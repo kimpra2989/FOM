@@ -1,5 +1,6 @@
 import { flexCenter } from '#/utils/styles'
 import { createVar, style } from '@vanilla-extract/css'
+import { recipe } from '@vanilla-extract/recipes'
 
 // 변수 정의
 export const slideSpacing = createVar()
@@ -22,18 +23,26 @@ export const slideStyles = style([
   },
 ])
 
-export const questionStyles = style([
-  flexCenter,
-  {
-    userSelect: 'none',
-    maxWidth: '400px',
-    height: '72px',
-    padding: '0 16px',
-    marginBottom: '48px',
-    borderRadius: '77px',
-    background: '#F00',
+export const questionStyles = recipe({
+  base: [
+    flexCenter,
+    {
+      userSelect: 'none',
+      maxWidth: '400px',
+      height: '72px',
+      padding: '0 16px',
+      marginBottom: '48px',
+      borderRadius: '77px',
+    },
+  ],
+  variants: {
+    background: {
+      Red: { backgroundColor: 'red' },
+      Green: { backgroundColor: 'green' },
+      Blue: { backgroundColor: 'blue' },
+    },
   },
-])
+})
 
 export const answerContainerStyles = style([
   flexCenter,
@@ -42,32 +51,55 @@ export const answerContainerStyles = style([
   },
 ])
 
-export const answerStyles = style([
-  flexCenter,
-  {
-    position: 'relative',
-    color: 'black',
-    width: '267px',
-    height: '120px',
-    borderRadius: '77px',
-    border: `7px solid #FFF`,
-    padding: '0 30px',
-    background: '#B9B9B9',
-    transition: 'transform .1s linear',
-    userSelect: 'none',
-    willChange: 'transform',
-
-    ':hover': {
-      transform: 'scale(1.05)',
+export const answerStyles = recipe({
+  base: [
+    flexCenter,
+    {
+      position: 'relative',
+      color: 'black',
+      width: '267px',
+      height: '120px',
+      borderRadius: '77px',
+      border: `7px solid #FFF`,
+      padding: '0 30px',
+      background: '#B9B9B9',
+      transition: 'transform .1s linear',
+      userSelect: 'none',
+      willChange: 'transform',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      ':hover': {
+        transform: 'scale(1.05)',
+      },
     },
-
-    selectors: {
-      '&:has(input:checked)': {
-        borderColor: `red`,
+  ],
+  variants: {
+    borderColor: {
+      Red: {
+        selectors: {
+          '&:has(input:checked)': {
+            borderColor: 'red',
+          },
+        },
+      },
+      Green: {
+        selectors: {
+          '&:has(input:checked)': {
+            borderColor: 'green',
+          },
+        },
+      },
+      Blue: {
+        selectors: {
+          '&:has(input:checked)': {
+            borderColor: 'blue',
+          },
+        },
       },
     },
   },
-])
+})
 
 export const inputStyles = style({
   position: 'absolute',

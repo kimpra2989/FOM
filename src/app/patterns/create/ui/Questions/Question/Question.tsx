@@ -17,7 +17,13 @@ interface Props extends QuestionType {
   questionColor: QuestionColorType
 }
 
-const Question: FC<Props> = ({ question, answers, setAnswer, scrollNext }) => {
+const Question: FC<Props> = ({
+  question,
+  answers,
+  questionColor,
+  setAnswer,
+  scrollNext,
+}) => {
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setAnswer(+e.target.value)
     requestAnimationFrame(() => {
@@ -27,10 +33,15 @@ const Question: FC<Props> = ({ question, answers, setAnswer, scrollNext }) => {
 
   return (
     <div className={slideStyles}>
-      <legend className={questionStyles}>{question}</legend>
+      <legend className={questionStyles({ background: questionColor })}>
+        {question}
+      </legend>
       <fieldset className={answerContainerStyles}>
         {answers.map((answer, idx) => (
-          <label className={answerStyles} key={idx}>
+          <label
+            className={answerStyles({ borderColor: questionColor })}
+            key={idx}
+          >
             <input
               className={inputStyles}
               type="radio"
