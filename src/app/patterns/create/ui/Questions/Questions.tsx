@@ -23,8 +23,10 @@ const Questions = () => {
     )
   }
 
+  // TODO: 질문들 업데이트
   const qs = [questions.Blue1, questions.Green1, questions.Red1]
-  const { ref, scrollNext, scrollPrev, scrollTo } = useCarousel()
+  const { ref, currentSlideIdx, scrollNext, scrollPrev, scrollTo } =
+    useCarousel()
 
   return (
     <section className={embla}>

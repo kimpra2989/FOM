@@ -56,6 +56,7 @@ export const answerStyles = style([
     background: '#B9B9B9',
     transition: 'transform .1s linear',
     userSelect: 'none',
+    willChange: 'transform',
 
     ':hover': {
       transform: 'scale(1.05)',
