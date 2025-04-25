@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, MouseEventHandler } from 'react'
+import { ChangeEventHandler, FC, MouseEventHandler } from 'react'
 import { CarouselHookReturnType } from '../../../hooks/useCarousel'
 import { Question as QuestionType } from '../../../types'
 import {
@@ -13,18 +13,18 @@ import {
 
 interface Props extends QuestionType {
   scrollNext: CarouselHookReturnType['scrollNext']
+  setAnswer: (value: number) => void
 }
 
-const Question: FC<Props> = ({ question, answers, scrollNext }) => {
+const Question: FC<Props> = ({ question, answers, setAnswer, scrollNext }) => {
   const handleAnswer: MouseEventHandler = (e) => {
     if (e.target instanceof HTMLElement && e.target.tagName === 'INPUT') {
       scrollNext()
     }
   }
 
-  // TODO : store의 값을 변경하는 로직으로 수정
-  const handleChange = (e) => {
-    console.log(e.target.value)
+  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    setAnswer(+e.target.value)
   }
 
   return (
