@@ -14,13 +14,13 @@ import {
 interface Props extends QuestionType {
   scrollNext: CarouselHookReturnType['scrollNext']
   setAnswer: (value: number) => void
-  questionColor: QuestionColorType
+  color: QuestionColorType
 }
 
 const Question: FC<Props> = ({
   question,
   answers,
-  questionColor,
+  color,
   setAnswer,
   scrollNext,
 }) => {
@@ -33,15 +33,12 @@ const Question: FC<Props> = ({
 
   return (
     <div className={slideStyles}>
-      <legend className={questionStyles({ background: questionColor })}>
+      <legend className={questionStyles({ background: color })}>
         {question}
       </legend>
       <fieldset className={answerContainerStyles}>
         {answers.map((answer, idx) => (
-          <label
-            className={answerStyles({ borderColor: questionColor })}
-            key={idx}
-          >
+          <label className={answerStyles({ borderColor: color })} key={idx}>
             <input
               className={inputStyles}
               type="radio"

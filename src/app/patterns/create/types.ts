@@ -6,6 +6,7 @@ export type QuestionsType = Record<
 export interface QuestionType {
   question: string
   answers: [string, string, string]
+  color: QuestionColorType
 }
 
 export type QuestionColorType = 'Red' | 'Green' | 'Blue'

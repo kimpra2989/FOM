@@ -1,5 +1,8 @@
 // carousel.css.ts
+import { Color } from '#/styles'
+import { flexCenter } from '#/utils/styles'
 import { createVar, style } from '@vanilla-extract/css'
+import { recipe } from '@vanilla-extract/recipes'
 
 // 변수 정의
 export const slideHeight = createVar()
@@ -19,6 +22,31 @@ export const embla = style({
 export const emblaViewport = style({
   height: '100%',
   overflow: 'hidden',
+})
+
+export const carouselCount = recipe({
+  base: [
+    flexCenter,
+    {
+      position: 'absolute',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      color: 'white',
+      userSelect: 'none',
+      width: '200px',
+      height: '200px',
+      borderRadius: '50%',
+      paddingTop: '100px',
+      zIndex: 10,
+    },
+  ],
+  variants: {
+    background: {
+      Red: { backgroundColor: Color.RED },
+      Green: { backgroundColor: Color.GREEN },
+      Blue: { backgroundColor: Color.BLUE },
+    },
+  },
 })
 
 // 슬라이드 컨테이너 스타일

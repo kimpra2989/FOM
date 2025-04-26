@@ -6,7 +6,12 @@ import { questions as baseQuestions } from '../../constants'
 import { useCarousel } from '../../hooks'
 import { QuestionType } from '../../types'
 import { Question } from './Question'
-import { embla, emblaContainer, emblaViewport } from './questions.css'
+import {
+  carouselCount,
+  embla,
+  emblaContainer,
+  emblaViewport,
+} from './questions.css'
 import { AnswersType } from './types'
 
 const Questions = () => {
@@ -48,17 +53,21 @@ const Questions = () => {
     }
   }
 
-  const { ref, currentSlideIdx, scrollNext, scrollPrev, scrollTo } =
-    useCarousel()
+  const { ref, currentSlideIdx, scrollNext, scrollTo } = useCarousel()
+
+  // TODO: 색상이 동기화 되지 않는 버그 수정
+  const questionColor =
+    currentSlideIdx < 3 ? 'Red' : currentSlideIdx < 6 ? 'Green' : 'Blue'
 
   return (
     <section className={embla}>
-      {currentSlideIdx + '/' + Question_Count}
+      <span className={carouselCount({ background: questionColor })}>
+        {currentSlideIdx + 1 + ' / ' + Question_Count}
+      </span>
       <div className={emblaViewport} ref={ref}>
         <div className={emblaContainer}>
           {questions.map((question, idx) => (
             <Question
-              questionColor={idx < 3 ? 'Red' : idx < 6 ? 'Green' : 'Blue'}
               setAnswer={setNthAnswer(idx)}
               scrollNext={scrollNext}
               {...question}
