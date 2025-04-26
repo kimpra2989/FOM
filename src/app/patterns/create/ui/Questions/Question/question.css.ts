@@ -1,3 +1,4 @@
+import { Color } from '#/styles'
 import { flexCenter } from '#/utils/styles'
 import { createVar, style } from '@vanilla-extract/css'
 import { recipe } from '@vanilla-extract/recipes'
@@ -37,9 +38,9 @@ export const questionStyles = recipe({
   ],
   variants: {
     background: {
-      Red: { backgroundColor: 'red' },
-      Green: { backgroundColor: 'green' },
-      Blue: { backgroundColor: 'blue' },
+      Red: { backgroundColor: Color.RED },
+      Green: { backgroundColor: Color.GREEN },
+      Blue: { backgroundColor: Color.BLUE },
     },
   },
 })
@@ -79,21 +80,21 @@ export const answerStyles = recipe({
       Red: {
         selectors: {
           '&:has(input:checked)': {
-            borderColor: 'red',
+            borderColor: Color.RED,
           },
         },
       },
       Green: {
         selectors: {
           '&:has(input:checked)': {
-            borderColor: 'green',
+            borderColor: Color.GREEN,
           },
         },
       },
       Blue: {
         selectors: {
           '&:has(input:checked)': {
-            borderColor: 'blue',
+            borderColor: Color.BLUE,
           },
         },
       },
