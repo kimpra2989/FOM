@@ -1,8 +1,9 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { useSidebarStatus } from './hooks'
-import { asideOpenButton, navContainer } from './nav.css'
+import { asideOpenButton, navContainer, navTitle } from './nav.css'
 import { Sidebar } from './ui/Sidebar'
 
 const Nav = () => {
@@ -20,7 +21,9 @@ const Nav = () => {
           />
         </button>
 
-        <span>FOM</span>
+        <Link href="/" className={navTitle}>
+          FOM
+        </Link>
 
         <div />
       </nav>

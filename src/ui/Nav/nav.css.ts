@@ -1,4 +1,4 @@
-import { NavHeight, ZIndex } from '#/styles/vars'
+import { Font, NavHeight, ZIndex } from '#/styles/vars'
 import { flexCenter } from '#/utils/styles'
 import { style } from '@vanilla-extract/css'
 
@@ -18,4 +18,9 @@ export const navContainer = style([
 
 export const asideOpenButton = style({
   border: '0',
+})
+
+export const navTitle = style({
+  fontWeight: Font.Weight.bold,
+  cursor: 'pointer',
 })
