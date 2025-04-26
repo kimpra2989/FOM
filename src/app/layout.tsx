@@ -1,5 +1,6 @@
 import './reset.css'
 import './globals.css'
+import { Nav } from '#/ui'
 
 export default function RootLayout({
   children,
@@ -8,7 +9,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="kr">
-      <body>{children}</body>
+      <body>
+        <Nav />
+        {children}
+      </body>
     </html>
   )
 }

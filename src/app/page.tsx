@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function Home() {
-  return <div>hi</div>
+  return <Link href={'./patterns/create'}>create FOM</Link>
 }
