@@ -27,6 +27,7 @@ const Questions = () => {
     return initialQuestion
   })
 
+  // eslint-disable-next-line
   const [answers, setAnswers] = useState<AnswersType>(
     // TODO: 질문 문항수에 따른 확장 가능한 구조로 수정
     new Array(9).fill(null) as AnswersType
@@ -53,6 +54,7 @@ const Questions = () => {
     }
   }
 
+  // eslint-disable-next-line
   const { ref, currentSlideIdx, scrollNext, scrollTo } = useCarousel()
 
   // TODO: 색상이 동기화 되지 않는 버그 수정
