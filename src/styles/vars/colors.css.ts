@@ -4,6 +4,7 @@ export const Color = {
   RED: createGlobalVar('red'),
   GREEN: createGlobalVar('green'),
   BLUE: createGlobalVar('blue'),
+  BLACK: createGlobalVar('black'),
 }
 
 globalStyle(':root', {
@@ -11,5 +12,6 @@ globalStyle(':root', {
     [Color.RED]: 'red',
     [Color.GREEN]: 'green',
     [Color.BLUE]: 'blue',
+    [Color.BLACK]: 'black',
   },
 })
