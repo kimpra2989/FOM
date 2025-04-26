@@ -13,6 +13,7 @@ export const navContainer = style([
     padding: '0 20px',
     zIndex: ZIndex.SIDEBAR,
     justifyContent: 'space-between',
+    color: 'white',
   },
 ])
 
