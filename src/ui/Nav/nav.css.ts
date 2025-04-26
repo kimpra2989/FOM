@@ -11,7 +11,7 @@ export const navContainer = style([
     width: '100%',
     height: NavHeight,
     padding: '0 20px',
-    zIndex: ZIndex.ASIDE,
+    zIndex: ZIndex.SIDEBAR,
     justifyContent: 'space-between',
   },
 ])
