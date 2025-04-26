@@ -1,20 +1,17 @@
 'use client'
 
-import { ZIndex } from '#/styles/vars'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useSidebarStatus } from './hooks'
 import { asideOpenButton, navContainer } from './nav.css'
+import { Sidebar } from './ui/Sidebar'
 
 const Nav = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const { isSidebarOpen, openSidebar } = useSidebarStatus()
 
   return (
     <>
       <nav className={navContainer}>
-        <button
-          onClick={() => setIsSidebarOpen(true)}
-          className={asideOpenButton}
-        >
+        <button onClick={openSidebar} className={asideOpenButton}>
           <Image
             alt="open side menu"
             src={'/logo.svg'}
@@ -25,26 +22,10 @@ const Nav = () => {
 
         <span>FOM</span>
 
-        <div></div>
+        <div />
       </nav>
 
-      {isSidebarOpen && (
-        <aside
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '250px',
-            height: '100vh',
-            backgroundColor: '#555',
-            color: '#fff',
-            padding: '60px 20px 20px',
-            zIndex: ZIndex.ASIDE,
-          }}
-        >
-          사이드 ui
-        </aside>
-      )}
+      <Sidebar isOpen={isSidebarOpen} />
     </>
   )
 }
