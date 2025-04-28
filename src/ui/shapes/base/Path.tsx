@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { Text } from '.'
 
 interface Props {
   width?: number
@@ -20,21 +21,8 @@ const Path: FC<Props> = ({
   return (
     <svg width={width} height={height} viewBox="-0.5 -0.5 101 101">
       <path d={d} stroke="white" stroke-width="1" />
-      <text
-        fontSize={12}
-        fontWeight="bold"
-        x={textX}
-        y={textY}
-        textAnchor="middle"
-        dominantBaseline="middle"
-        fill="white"
-      >
-        {text?.map((line, idx) => (
-          <tspan x="50" dy={12 * idx} key={idx}>
-            {line}
-          </tspan>
-        ))}
-      </text>
+
+      {text && <Text text={text} textX={textX} textY={textY} />}
     </svg>
   )
 }

@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import Path from './Path'
+import { Path } from './base'
 
 interface Props {
   width?: number
