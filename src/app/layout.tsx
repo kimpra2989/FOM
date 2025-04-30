@@ -1,6 +1,6 @@
-import './reset.css'
-import './globals.css'
 import { Nav } from '#/ui'
+import './reset.css'
+import './app.css'
 
 export default function RootLayout({
   children,
