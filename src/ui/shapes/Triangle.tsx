@@ -1,24 +1,37 @@
+import { SHAPES } from '#/constants'
 import { FC } from 'react'
-import { Path } from './base'
+import Text, { SVGTextProps } from './base/Text'
 
-interface Props {
+interface Props extends SVGTextProps {
   width?: number
   height?: number
-  text?: string[]
+  image?: string
 }
 
-const Triangle: FC<Props> = ({ width, height, text }) => {
+const Triangle: FC<Props> = ({
+  width,
+  height,
+  text,
+  textX,
+  textY = 70,
+  image,
+}) => {
   return (
-    <Path
-      width={width}
-      height={height}
-      text={text}
-      textY={70}
-      d="M 50 13.397 
-         L 100 100
-         L 0 100
-         Z"
-    />
+    <svg width={width} height={height} viewBox="-0.5 -0.5 101 101">
+      <path d={SHAPES.TRIANGLE} stroke="white" strokeWidth="1" />
+
+      {image ? (
+        <image
+          href={image}
+          clipPath="url(#triangle)"
+          preserveAspectRatio="xMinYMin slice"
+          width="100"
+          height="100"
+        />
+      ) : (
+        <Text text={text} textX={textX} textY={textY} />
+      )}
+    </svg>
   )
 }
 

@@ -1,24 +1,30 @@
+import { SHAPES } from '#/constants'
 import { FC } from 'react'
-import { Path } from './base'
+import Text, { SVGTextProps } from './base/Text'
 
-interface Props {
+interface Props extends SVGTextProps {
   width?: number
   height?: number
-  text?: string[]
+  image?: string
 }
 
-const Square: FC<Props> = ({ width, height, text }) => {
+const Square: FC<Props> = ({ width, height, text, textX, textY, image }) => {
   return (
-    <Path
-      width={width}
-      height={height}
-      text={text}
-      d="M 0 0
-         L 100 0
-         L 100 100
-         L 0 100
-         Z"
-    />
+    <svg width={width} height={height} viewBox="-0.5 -0.5 101 101">
+      <path d={SHAPES.SQUARE} stroke="white" strokeWidth="1" />
+
+      {image ? (
+        <image
+          href={image}
+          clipPath="url(#square)"
+          preserveAspectRatio="xMinYMin slice"
+          width="100"
+          height="100"
+        />
+      ) : (
+        <Text text={text} textX={textX} textY={textY} />
+      )}
+    </svg>
   )
 }
 

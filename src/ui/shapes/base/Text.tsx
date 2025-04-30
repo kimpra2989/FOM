@@ -1,12 +1,18 @@
 import { FC } from 'react'
 
-interface Props {
-  text: string[]
+export interface SVGTextProps {
+  text?: string[]
   textX?: number
   textY?: number
+  gap?: number
 }
 
-const Circle: FC<Props> = ({ text, textX = 50, textY = 50 }) => {
+const Text: FC<SVGTextProps> = ({
+  text = ['CREATE', 'FOM'],
+  textX = 50,
+  textY = 50,
+  gap = 12,
+}) => {
   return (
     <text
       fontSize={12}
@@ -18,7 +24,7 @@ const Circle: FC<Props> = ({ text, textX = 50, textY = 50 }) => {
       fill="white"
     >
       {text.map((line, idx) => (
-        <tspan x="50" dy={12 * idx} key={idx}>
+        <tspan x="50" dy={gap * idx} key={idx}>
           {line}
         </tspan>
       ))}
@@ -26,4 +32,4 @@ const Circle: FC<Props> = ({ text, textX = 50, textY = 50 }) => {
   )
 }
 
-export default Circle
+export default Text
