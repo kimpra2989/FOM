@@ -2,21 +2,21 @@ import { FC } from 'react'
 
 export interface SVGTextProps {
   text?: string[]
-  textX?: number
-  textY?: number
-  gap?: number
+  textX: number | string
+  textY: number | string
+  lineHeight?: number
 }
 
 const Text: FC<SVGTextProps> = ({
   text = ['CREATE', 'FOM'],
-  textX = 50,
-  textY = 50,
-  gap = 12,
+  textX,
+  textY,
+  lineHeight = 20,
 }) => {
   return (
     <text
-      fontSize={12}
-      fontWeight="bold"
+      fontSize={16}
+      fontWeight="800"
       x={textX}
       y={textY}
       textAnchor="middle"
@@ -24,7 +24,7 @@ const Text: FC<SVGTextProps> = ({
       fill="white"
     >
       {text.map((line, idx) => (
-        <tspan x="50" dy={gap * idx} key={idx}>
+        <tspan x={textX} dy={lineHeight * idx} key={idx}>
           {line}
         </tspan>
       ))}

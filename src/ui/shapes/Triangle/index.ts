@@ -1,1 +1,1 @@
-export { default as TRIANGLE } from './Triangle'
+export { default as Triangle } from './Triangle'
