@@ -12,5 +12,6 @@ globalStyle('html, body', {
 })
 
 globalStyle('body', {
-  marginTop: NavHeight,
+  paddingTop: NavHeight,
+  scrollbarWidth: 'none',
 })
