@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { textStyles } from './text.css'
 
 export interface SVGTextProps {
   text?: string[]
@@ -22,6 +23,7 @@ const Text: FC<SVGTextProps> = ({
       textAnchor="middle"
       dominantBaseline="middle"
       fill="white"
+      className={textStyles}
     >
       {text.map((line, idx) => (
         <tspan x={textX} dy={lineHeight * idx} key={idx}>

@@ -9,6 +9,7 @@ const squareRecipe = recipe({
     height: '116px',
     border: '1px solid white',
     boxSizing: 'border-box',
+    userSelect: 'none',
   },
   variants: {
     border: {

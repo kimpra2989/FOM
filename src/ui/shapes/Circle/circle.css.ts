@@ -10,6 +10,7 @@ const circleRecipe = recipe({
     borderRadius: '50%',
     border: '1px solid white',
     boxSizing: 'border-box',
+    userSelect: 'none',
   },
   variants: {
     border: {

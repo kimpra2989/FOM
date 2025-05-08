@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import Text from '../base/Text'
+import { Text } from '../base'
 import { triangleStyle } from './triangle.css'
 
 interface Props {
