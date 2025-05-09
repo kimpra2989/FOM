@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^10.0.7",
+    "@react-three/fiber": "^9.1.2",
+    "@types/three": "^0.176.0",
+    "@use-gesture/react": "^10.3.1",
     "@vanilla-extract/css": "^1.17.1",
     "@vanilla-extract/dynamic": "^2.1.2",
     "@vanilla-extract/recipes": "^0.5.5",
@@ -20,7 +24,8 @@
     "jotai": "^2.12.4",
     "next": "15.3.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "three": "^0.176.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

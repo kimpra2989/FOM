@@ -4,7 +4,7 @@ import { globalStyle } from '@vanilla-extract/css'
 globalStyle('html, body', {
   margin: 0,
   width: '100vw',
-  height: `calc(100vh - ${NavHeight})`,
+  height: '100vh',
   position: 'relative',
   maxWidth: '100vw',
   overflowX: 'hidden',
