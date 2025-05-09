@@ -3,7 +3,7 @@ import type { NextConfig } from 'next'
 const withVanillaExtract = createVanillaExtractPlugin()
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  transpilePackages: ['three'],
 }
 
 export default withVanillaExtract(nextConfig)

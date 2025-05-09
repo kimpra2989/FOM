@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { useSidebarStatus } from './hooks'
 import { asideOpenButton, navContainer, navTitle } from './nav.css'
@@ -12,20 +11,13 @@ const Nav = () => {
   return (
     <>
       <nav className={navContainer}>
-        <button onClick={openSidebar} className={asideOpenButton}>
-          <Image
-            alt="open side menu"
-            src={'/logo.svg'}
-            width={24}
-            height={24}
-          />
-        </button>
+        <button onClick={openSidebar} className={asideOpenButton} />
 
         <Link href="/" className={navTitle}>
           FOM
         </Link>
 
-        <div />
+        <div style={{ width: '24px', height: '24px' }} />
       </nav>
 
       <Sidebar isOpen={isSidebarOpen} />

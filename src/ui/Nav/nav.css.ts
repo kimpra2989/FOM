@@ -17,7 +17,10 @@ export const navContainer = style({
 })
 
 export const asideOpenButton = style({
+  width: '24px',
+  height: '24px',
   border: '0',
+  backgroundColor: 'white'
 })
 
 export const navTitle = style({

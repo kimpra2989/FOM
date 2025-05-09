@@ -20,6 +20,7 @@ export const filterStyles = style([
   flexCenter,
   {
     position: 'fixed',
+    zIndex: 10,
     top: `calc(${NavHeight} - 9px)`,
     left: '50%',
     transform: 'translateX(-50%)',
@@ -28,7 +29,7 @@ export const filterStyles = style([
     gap: '7px',
     borderRadius: '12px',
     padding: '7px 16px',
-    background: 'rgb(255 255 255 / 00.32)',
+    background: 'rgb(255 255 255 / 0.32)',
   },
 ])
 
