@@ -1,9 +1,10 @@
 'use client'
 
 import { circleFilterAtom } from '#/atoms'
-import { Circle, ShapeFilter, Square, Triangle } from '#/ui'
+import { ShapeFilter } from '#/ui'
 import { useAtomValue } from 'jotai'
-import { gridContainer } from './home.css'
+import { layoutStyles } from './home.css'
+import { InfiniteGrid } from './ui'
 
 export default function Home() {
   // 도형 정보를 받아와서 필터 후 랜더
@@ -11,28 +12,9 @@ export default function Home() {
   console.log('x', shape)
 
   return (
-    <main>
+    <main className={layoutStyles}>
       <ShapeFilter />
-      <div className={gridContainer}>
-        <Square />
-        <Square image="/pattern1.png" />
-        <Triangle />
-        <Triangle image="/pattern1.png" />
-        <Circle />
-        <Circle image="/pattern1.png" />
-        <Square />
-        <Square image="/pattern1.png" />
-        <Triangle />
-        <Triangle image="/pattern1.png" />
-        <Circle />
-        <Circle image="/pattern1.png" />
-        <Square />
-        <Square image="/pattern1.png" />
-        <Triangle />
-        <Triangle image="/pattern1.png" />
-        <Circle />
-        <Circle image="/pattern1.png" />
-      </div>
+      <InfiniteGrid />
     </main>
   )
 }
