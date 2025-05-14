@@ -1,12 +1,11 @@
 'use client'
 
-import { Canvas, useThree } from '@react-three/fiber'
+import { Canvas } from '@react-three/fiber'
 import { useRef, useState } from 'react'
 import * as THREE from 'three'
 
 const GridItem = ({
   position,
-  text,
 }: {
   position: [number, number, number]
   text: string
@@ -22,8 +21,8 @@ const GridItem = ({
 
 const GridLayer = () => {
   const groupRef = useRef<THREE.Group>(null)
-  const { size, camera } = useThree()
-  const [position, setPosition] = useState<[number, number]>([0, 0])
+  // const { size, camera } = useThree()
+  const [position] = useState<[number, number]>([0, 0])
 
   // 마우스 드래그 감지
   // const bind = useDrag(({ offset: [x, y] }) => {
@@ -43,7 +42,7 @@ const GridLayer = () => {
   })
 
   return (
-    <group ref={groupRef} position={[position[0], position[1], 0]} >
+    <group ref={groupRef} position={[position[0], position[1], 0]}>
       {items.map((item) => (
         <GridItem key={item.id} position={item.position} text={item.text} />
       ))}
