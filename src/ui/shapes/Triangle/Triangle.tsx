@@ -4,11 +4,10 @@ import { triangleStyle } from './triangle.css'
 
 interface Props {
   length?: number
-  text?: string[]
   image?: string
 }
 
-const Triangle: FC<Props> = ({ length = 138, text, image }) => {
+const Triangle: FC<Props> = ({ length = 138, image }) => {
   const STROKE = 1
   const width = length
   const height = length * 0.866
@@ -32,7 +31,7 @@ const Triangle: FC<Props> = ({ length = 138, text, image }) => {
         strokeWidth={STROKE}
       />
 
-      <Text text={text} textX={'50%'} textY={'63%'} />
+      <Text textX={'50%'} textY={'63%'} />
     </svg>
   )
 }

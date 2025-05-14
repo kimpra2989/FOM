@@ -2,11 +2,10 @@ import { FC } from 'react'
 import { innerImage, withImage, withText } from './circle.css'
 
 interface Props {
-  text?: string[]
   image?: string
 }
 
-const Circle: FC<Props> = ({ text, image }) => {
+const Circle: FC<Props> = ({ image }) => {
   return image ? (
     <div className={withImage}>
       <img src={image} className={innerImage} />

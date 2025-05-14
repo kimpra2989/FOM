@@ -2,11 +2,10 @@ import { FC } from 'react'
 import { innerImage, withImage, withText } from './square.css'
 
 interface Props {
-  text?: string[]
   image?: string
 }
 
-const Square: FC<Props> = ({ text, image }) => {
+const Square: FC<Props> = ({ image }) => {
   return image ? (
     <div className={withImage}>
       <img src={image} className={innerImage} />
