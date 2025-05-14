@@ -9,7 +9,7 @@ function useSidebarStatus() {
     if (!isSidebarOpen) return
 
     const closeSidebar = (e: MouseEvent) => {
-      if (e.target instanceof HTMLImageElement) return
+      if (e.target instanceof HTMLButtonElement) return
       if (e.target instanceof HTMLElement && e.target.tagName !== 'ASIDE') {
         setIsSidebarOpen(false)
       }
