@@ -1,8 +1,12 @@
 'use client'
 
-import { Canvas, Character } from '#/ui/canvas'
+import { Character } from '#/ui/canvas'
 import { Environment, OrbitControls } from '@react-three/drei'
 import { center } from './page.css'
+import dynamic from 'next/dynamic'
+const Canvas = dynamic(() => import('../../ui/canvas/Canvas/Canvas'), {
+  ssr: false,
+})
 
 export default function CharacterPage() {
   return (
