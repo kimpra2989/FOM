@@ -1,5 +1,4 @@
-import './reset.css'
-import './app.css'
+import { Nav } from './ui'
 
 export default function RootLayout({
   children,
@@ -7,8 +6,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="kr">
-      <body>{children}</body>
-    </html>
+    <>
+      <Nav />
+      {children}
+    </>
   )
 }
