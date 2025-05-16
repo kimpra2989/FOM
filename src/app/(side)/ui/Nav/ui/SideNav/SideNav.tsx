@@ -4,14 +4,13 @@ import { container, linkContainer, linkItem, logo } from './sideNav.css'
 
 const SideNav = () => {
   const currentPathname = usePathname()
-  const selected = (pathname: string) =>
-    currentPathname.split('/')[1] === pathname
+  const isActive = (href: string) => currentPathname.slice(1).startsWith(href)
 
-  const links: { displayName: string; pathname: string }[] = [
-    { displayName: 'CHARACTER', pathname: 'character' },
-    { displayName: 'BRAND', pathname: 'brand' },
-    { displayName: 'BASIC SHAPE', pathname: 'introduction' },
-    { displayName: 'SHOP', pathname: 'shop' },
+  const links: { displayName: string; href: string }[] = [
+    { displayName: 'CHARACTER', href: 'introduction/character' },
+    { displayName: 'BRAND', href: 'brand' },
+    { displayName: 'BASIC SHAPE', href: 'introduction/shape' },
+    { displayName: 'SHOP', href: 'shop' },
   ]
 
   return (
@@ -19,13 +18,13 @@ const SideNav = () => {
       <div className={logo} />
 
       <div className={linkContainer}>
-        {links.map(({ displayName, pathname }) => (
+        {links.map(({ displayName, href }) => (
           <Link
-            href={`/${pathname}`}
+            href={`/${href}`}
             className={linkItem({
-              background: selected(pathname) ? 'selected' : undefined,
+              background: isActive(href) ? 'active' : undefined,
             })}
-            key={pathname}
+            key={displayName}
           >
             {displayName}
           </Link>

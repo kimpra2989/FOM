@@ -48,7 +48,7 @@ export const linkItem = recipe({
   },
   variants: {
     background: {
-      selected: {
+      active: {
         backgroundColor: Color.WHITE,
         color: '#141414',
       },
