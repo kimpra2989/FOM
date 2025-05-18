@@ -22,6 +22,7 @@
     "embla-carousel-wheel-gestures": "^8.0.2",
     "immer": "^10.1.1",
     "jotai": "^2.12.4",
+    "motion": "^12.12.1",
     "next": "15.3.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
