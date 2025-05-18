@@ -28,9 +28,10 @@ export const right = style({
 export const colorBox = style([
   flexCenter,
   {
-    width: '100px',
-    height: '100px',
+    width: '120px',
+    height: '120px',
     border: '1px solid white',
+    lineHeight: 1.2
   },
 ])
 

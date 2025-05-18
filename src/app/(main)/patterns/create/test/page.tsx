@@ -51,8 +51,9 @@ export default function TestPage() {
         <fieldset className={inputContainer}>
           <legend style={{ marginBottom: '12px' }}>red</legend>
           <Slider
-            label="hex"
-            max={255}
+            label="hue"
+            min={-60}
+            max={0}
             value={r[0]}
             onChange={iHandler(0, setR)}
           />
@@ -62,8 +63,9 @@ export default function TestPage() {
         <fieldset className={inputContainer}>
           <legend style={{ marginBottom: '12px' }}>green</legend>
           <Slider
-            label="hex"
-            max={255}
+            label="hue"
+            min={60}
+            max={120}
             value={g[0]}
             onChange={iHandler(0, setG)}
           />
@@ -73,8 +75,9 @@ export default function TestPage() {
         <fieldset className={inputContainer}>
           <legend style={{ marginBottom: '12px' }}>blue</legend>
           <Slider
-            label="hex"
-            max={255}
+            label="hue"
+            min={180}
+            max={240}
             value={b[0]}
             onChange={iHandler(0, setB)}
           />
@@ -84,33 +87,19 @@ export default function TestPage() {
       </section>
       <section className={right}>
         {colors.map((color) => {
-          if ('hex' in color) {
-            const { hex } = color
-            return (
-              <div
-                className={colorBox}
-                style={{ backgroundColor: `rgb(${hex}, ${hex}, ${hex})` }}
-                key={hex}
-              >
-                hex : {hex}
-              </div>
-            )
-          } else {
-            const { h, s, l } = color
-            console.log(h, s, l)
-
-            return (
-              <div
-                className={colorBox}
-                style={{ backgroundColor: `hsl(${h}, ${s}%, ${l}%)` }}
-                key={'' + h + s + l}
-              >
-                채도 : {s}
-                <br />
-                명도 : {l}
-              </div>
-            )
-          }
+          const { color: c, r, g, b } = color
+          return (
+            <div
+              className={colorBox}
+              style={{ backgroundColor: `rgb(${r}, ${g}, ${b})` }}
+              key={`${r}${g}${b}`}
+            >
+              from : {c}
+              <br />r : {r}
+              <br />g : {g}
+              <br />b : {b}
+            </div>
+          )
         })}
       </section>
     </main>
