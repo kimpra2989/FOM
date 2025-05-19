@@ -1,8 +1,8 @@
 'use client'
-import { Canvas } from '@react-three/fiber'
+import { Canvas, CanvasProps } from '@react-three/fiber'
 import { CSSProperties, FC, ReactNode } from 'react'
 
-interface Props {
+interface Props extends CanvasProps {
   width?: number
   height?: number
   cameraPos?: [number, number, number]
