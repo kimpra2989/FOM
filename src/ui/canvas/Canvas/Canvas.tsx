@@ -14,7 +14,7 @@ interface Props {
 const CanvasWrapper: FC<Props> = ({
   width = window.innerWidth,
   height = window.innerHeight,
-  cameraPos = [0, 0, 0.15],
+  cameraPos = [0, 0, 0.18],
   children,
   className,
   styles,

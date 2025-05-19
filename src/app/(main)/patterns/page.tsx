@@ -57,7 +57,7 @@ export default function PatternPage() {
         </motion.div>
       </motion.main>
       {open && (
-        <CanvasModal closeModal={closeModal} nextPattern={nextPattern} />
+        <CanvasModal closeModal={closeModal} nextPattern={nextPattern} textureUrl={`/pattern${patternIdx}.png`} />
       )}
     </>
   )

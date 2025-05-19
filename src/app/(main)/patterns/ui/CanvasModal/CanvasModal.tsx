@@ -1,18 +1,19 @@
 'use client'
 
-import { Canvas, Character } from '#/ui/canvas'
-import { Environment, OrbitControls } from '@react-three/drei'
+import { Canvas } from '#/ui/canvas'
 import { motion } from 'motion/react'
 import { FC, MouseEventHandler } from 'react'
 import { createPortal } from 'react-dom'
 import { button, buttonWrapper, canvasStyle } from './canvas-modal.css'
+import Scene from './Scene'
 
 interface Props {
   closeModal: MouseEventHandler
   nextPattern: () => Promise<void>
+  textureUrl: string
 }
 
-const CanvasModal: FC<Props> = ({ closeModal, nextPattern }) => {
+const CanvasModal: FC<Props> = ({ closeModal, nextPattern, textureUrl }) => {
   return createPortal(
     <motion.div
       initial={{ opacity: 0 }}
@@ -26,10 +27,7 @@ const CanvasModal: FC<Props> = ({ closeModal, nextPattern }) => {
         height={window.innerHeight}
         styles={{ backgroundColor: 'transparent' }}
       >
-        <OrbitControls enableRotate />
-        <Environment preset="city" />
-        <ambientLight />
-        <Character url="/fom_test.glb" />
+        <Scene textureUrl={textureUrl} />
       </Canvas>
       <div className={buttonWrapper}>
         <button className={button} onClick={nextPattern}>
