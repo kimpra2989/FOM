@@ -1,8 +1,9 @@
 'use client'
 
 import { motion, useAnimation } from 'motion/react'
-import { useState } from 'react'
-import { imageWrapper, innerImage } from './page.css'
+import { MouseEventHandler, useState } from 'react'
+import { button, buttonWrapper, imageWrapper, innerImage } from './page.css'
+import CanvasModal from './ui/CanvasModal/CanvasModal'
 
 export default function PatternPage() {
   const [patternIdx, setPatternIdx] = useState(0)
@@ -21,21 +22,43 @@ export default function PatternPage() {
     })
   }
 
+  const [open, setOpen] = useState(false)
+  const closeModal: MouseEventHandler = () => setOpen(false)
+
   return (
-    <motion.main
-      initial={{ clipPath: 'circle(100px at 50% 50%)' }}
-      animate={{ clipPath: 'circle(150% at 50% 50%)' }}
-      transition={{ duration: 4, ease: 'easeOut' }}
-      className={imageWrapper}
-    >
-      <motion.div
-        animate={controls}
-        initial={{ filter: 'grayscale(0%)' }}
-        className={innerImage}
-        style={{ backgroundImage: `url(/pattern${patternIdx}.png)` }}
+    <>
+      <motion.main
+        initial={{ clipPath: 'circle(100px at 50% 50%)' }}
+        animate={{ clipPath: 'circle(150% at 50% 50%)' }}
+        transition={{ duration: 4, ease: 'easeOut' }}
+        className={imageWrapper}
       >
-        <button onClick={nextPattern}>다음</button>
-      </motion.div>
-    </motion.main>
+        <motion.div
+          animate={controls}
+          initial={{ filter: 'grayscale(0%)' }}
+          className={innerImage}
+          style={{ backgroundImage: `url(/pattern${patternIdx}.png)` }}
+        >
+          {!open && (
+            <div className={buttonWrapper}>
+              <button className={button} onClick={nextPattern}>
+                다음
+              </button>
+              <button
+                className={button}
+                onClick={() => {
+                  setOpen(true)
+                }}
+              >
+                캐릭터 보기
+              </button>
+            </div>
+          )}
+        </motion.div>
+      </motion.main>
+      {open && (
+        <CanvasModal closeModal={closeModal} nextPattern={nextPattern} />
+      )}
+    </>
   )
 }
