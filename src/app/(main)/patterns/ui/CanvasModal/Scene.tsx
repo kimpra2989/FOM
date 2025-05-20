@@ -13,7 +13,7 @@ const Scene: FC<Props> = ({ textureUrl }) => {
 
   return (
     <>
-      <OrbitControls enableRotate />
+      <OrbitControls enableRotate enablePan={false} />
       <Environment preset="city" />
       <ambientLight />
       {/* <color attach="background" args={['#444']} /> */}

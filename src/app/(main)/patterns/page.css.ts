@@ -1,4 +1,3 @@
-import { flexCenter } from '#/utils/styles'
 import { style } from '@vanilla-extract/css'
 
 export const imageWrapper = style({
@@ -7,12 +6,13 @@ export const imageWrapper = style({
   height: '100vh',
 })
 
-export const innerImage = style([
-  flexCenter,
-  {
-    height: '100%',
-  },
-])
+export const background = style({
+  position: 'fixed',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+})
 
 // TODO : 공통 css 분리
 export const buttonWrapper = style({
@@ -22,6 +22,7 @@ export const buttonWrapper = style({
   transform: 'translate(-50%, -50%)',
   display: 'flex',
   gap: '16px',
+  zIndex: 11,
 })
 
 export const button = style({
