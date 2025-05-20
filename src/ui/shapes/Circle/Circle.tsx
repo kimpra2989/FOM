@@ -8,7 +8,7 @@ interface Props {
 const Circle: FC<Props> = ({ image }) => {
   return image ? (
     <div className={withImage}>
-      <img src={image} className={innerImage} />
+      <img src={image} className={innerImage} draggable={false} />
     </div>
   ) : (
     <div className={withText}>

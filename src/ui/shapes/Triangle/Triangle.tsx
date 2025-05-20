@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { Text } from '../base'
-import { triangleStyle } from './triangle.css'
+import { innerImage, triangleStyle } from './triangle.css'
 
 interface Props {
   length?: number
@@ -14,7 +14,9 @@ const Triangle: FC<Props> = ({ length = 138, image }) => {
 
   return image ? (
     // image가 없는 경우 (border O)
-    <img src={image} className={triangleStyle} />
+    <div className={triangleStyle}>
+      <img src={image} className={innerImage} draggable={false} />
+    </div>
   ) : (
     // image가 있는 경우 (border X)
     <svg
