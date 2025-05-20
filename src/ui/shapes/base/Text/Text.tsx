@@ -8,12 +8,9 @@ export interface SVGTextProps {
   lineHeight?: number
 }
 
-const Text: FC<SVGTextProps> = ({
-  text = ['CREATE', 'FOM'],
-  textX,
-  textY,
-  lineHeight = 20,
-}) => {
+const Text: FC<SVGTextProps> = ({ textX, textY, lineHeight = 20 }) => {
+  const text = ['CREATE', 'FOM']
+
   return (
     <text
       fontSize={16}

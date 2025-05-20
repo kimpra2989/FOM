@@ -8,6 +8,7 @@ globalStyle('html, body', {
   position: 'relative',
   maxWidth: '100vw',
   overflowX: 'hidden',
+  color: Color.WHITE,
   backgroundColor: Color.BLACK,
 })
 

@@ -1,5 +1,3 @@
-import { SVGShapeDefs } from '#/context'
-import { Nav } from '#/ui'
 import './reset.css'
 import './app.css'
 
@@ -10,11 +8,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="kr">
-      <body>
-        <Nav />
-        <SVGShapeDefs />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   )
 }
