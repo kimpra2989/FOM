@@ -12,6 +12,9 @@ export const Shape = {
     r: 65,
   },
   square: {
-    len : 116
-  }
+    len: 116,
+  },
+  triangle: {
+    r: 87,
+  },
 }
