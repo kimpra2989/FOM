@@ -17,16 +17,21 @@
     "@vanilla-extract/dynamic": "^2.1.2",
     "@vanilla-extract/recipes": "^0.5.5",
     "@vanilla-extract/sprinkles": "^1.6.3",
+    "canvas": "^3.0.0-rc3",
     "embla-carousel": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "embla-carousel-wheel-gestures": "^8.0.2",
     "immer": "^10.1.1",
     "jotai": "^2.12.4",
+    "konva": "^9.3.20",
     "motion": "^12.12.1",
     "next": "15.3.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "three": "^0.176.0"
+    "react-konva": "^19.0.3",
+    "react-konva-utils": "^1.1.0",
+    "three": "^0.176.0",
+    "use-image": "^1.1.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
