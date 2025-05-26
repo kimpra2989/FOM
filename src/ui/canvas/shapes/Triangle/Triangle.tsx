@@ -35,10 +35,10 @@ const TriangleShape: FC<Props> = ({ x, y, imageUrl }) => {
       />
     </Group>
   ) : (
-    <>
-      <RegularPolygon x={x} y={y} radius={R} stroke="white" sides={3} />
-      <Text x={x - R} y={y - R} width={R * 2} height={R * 2} />
-    </>
+    <Group x={x} y={y}>
+      <RegularPolygon radius={R} stroke="white" sides={3} strokeWidth={1} />
+      <Text x={-R} y={-R} width={R * 2} height={R * 2} />
+    </Group>
   )
 }
 

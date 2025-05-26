@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Rect } from 'react-konva'
+import { Group, Rect } from 'react-konva'
 import { Image, Text } from '../base'
 import { Shape } from '../constants'
 
@@ -16,23 +16,17 @@ const Square: FC<Props> = ({ x, y, imageUrl }) => {
     <Image
       x={x}
       y={y}
+      offset={{ x: len / 2, y: len / 2 }}
       width={len}
       height={len}
       imageUrl={imageUrl}
       alt="pattern image"
     />
   ) : (
-    <>
-      <Rect
-        x={x}
-        y={y}
-        width={len}
-        height={len}
-        stroke="white"
-        strokeWidth={1}
-      />
-      <Text x={x} y={y} width={len} height={len} />
-    </>
+    <Group x={x} y={y} offset={{ x: len / 2, y: len / 2 }}>
+      <Rect width={len} height={len} stroke="white" strokeWidth={1} />
+      <Text width={len} height={len} />
+    </Group>
   )
 }
 

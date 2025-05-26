@@ -1,6 +1,5 @@
 import { FC } from 'react'
-import { Circle } from 'react-konva'
-// import useImage from 'use-image'
+import { Circle, Group } from 'react-konva'
 import { Image, Text } from '../base'
 import { Shape } from '../constants'
 
@@ -25,10 +24,10 @@ const CircleShape: FC<Props> = ({ x, y, imageUrl }) => {
       alt="pattern image"
     />
   ) : (
-    <>
-      <Circle x={x} y={y} radius={R} stroke="white" />
-      <Text x={x - R} y={y - R} width={R * 2} height={R * 2} />
-    </>
+    <Group x={x} y={y}>
+      <Circle radius={R} stroke="white" strokeWidth={1} />
+      <Text x={-R} y={-R} width={R * 2} height={R * 2} />
+    </Group>
   )
 }
 
