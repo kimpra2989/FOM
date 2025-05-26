@@ -1,29 +1,37 @@
 import { FC } from 'react'
 import { Group, Rect } from 'react-konva'
-import { Image, Text } from '../base'
+import { BasePropsType, Image, Text } from '../base'
 import { Shape } from '../constants'
 
-interface Props {
-  x: number
-  y: number
-  imageUrl?: string
-}
+type Props = BasePropsType
 
-const Square: FC<Props> = ({ x, y, imageUrl }) => {
+const Square: FC<Props> = ({
+  x,
+  y,
+  imageUrl,
+  handleMouseOver,
+  handleMouseOut,
+}) => {
   const len = Shape.square.len
+
+  const sharedProps = {
+    x,
+    y,
+    onMouseOver: handleMouseOver,
+    onMouseOut: handleMouseOut,
+  }
 
   return imageUrl ? (
     <Image
-      x={x}
-      y={y}
       offset={{ x: len / 2, y: len / 2 }}
       width={len}
       height={len}
       imageUrl={imageUrl}
       alt="pattern image"
+      {...sharedProps}
     />
   ) : (
-    <Group x={x} y={y} offset={{ x: len / 2, y: len / 2 }}>
+    <Group offset={{ x: len / 2, y: len / 2 }} {...sharedProps}>
       <Rect width={len} height={len} stroke="white" strokeWidth={1} />
       <Text width={len} height={len} />
     </Group>
