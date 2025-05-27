@@ -1,12 +1,15 @@
 'use client'
 
+import { useSidebarStatus } from '#/hooks/nav'
 import { SideNav, TopNav } from './ui'
 
 const Nav = () => {
+  const { isSidebarOpen, openSidebar } = useSidebarStatus()
+
   return (
     <>
-      <TopNav />
-      <SideNav />
+      <TopNav onLeftButtonClick={openSidebar} />
+      <SideNav isOpen={isSidebarOpen} />
     </>
   )
 }

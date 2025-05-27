@@ -8,6 +8,7 @@ export const navContainer = style([
     position: 'fixed',
     top: 0,
     left: 0,
+    justifyContent: 'space-between',
     width: '100%',
     height: NavHeight,
     padding: '0 20px',
@@ -19,4 +20,11 @@ export const navContainer = style([
 
 export const navTitle = style({
   fontWeight: Font.Weight.bold,
+})
+
+export const asideOpenButton = style({
+  width: '24px',
+  height: '24px',
+  border: '0',
+  backgroundColor: 'white',
 })

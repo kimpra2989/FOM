@@ -1,5 +1,3 @@
-import { hslToHex } from '#/utils'
-
 type Color = number[]
 type HexColor = {
   color: string
@@ -9,31 +7,31 @@ type HexColor = {
 }
 
 const getResultColors = (r: Color, g: Color, b: Color) => {
-  const rHex = hslToHex(...(r as [number, number, number]))
-  const gHex = hslToHex(...(g as [number, number, number]))
-  const bHex = hslToHex(...(b as [number, number, number]))
+  const rHex = toHex(r, 0)
+  const gHex = toHex(g, 1)
+  const bHex = toHex(b, 2)
 
   const getHexPercent = (hex: number) => +(hex / 255).toFixed(3) * 100
 
   const pq = [
     {
       color: 'red',
-      fig: getHexPercent(rHex[0]),
+      val: getHexPercent(r[0]),
       hex: rHex,
     },
     {
       color: 'green',
-      fig: getHexPercent(gHex[1]),
+      val: getHexPercent(g[1]),
       hex: gHex,
     },
     {
       color: 'blue',
-      fig: getHexPercent(bHex[2]),
+      val: getHexPercent(b[2]),
       hex: bHex,
     },
   ]
-  pq.sort((a, b) => b.fig - a.fig)
-  // console.log('pq', pq)
+
+  pq.sort((a, b) => b.val - a.val)
 
   const [high, mid, low] = pq
 
@@ -46,10 +44,10 @@ const getResultColors = (r: Color, g: Color, b: Color) => {
     },
   ]
 
-  if (high.fig - mid.fig >= 14 && mid.fig - low.fig < 14) {
+  if (high.val - mid.val >= 14 && mid.val - low.val < 14) {
     const [r, g, b] = high.hex
     res.push({ color: high.color, r, g, b })
-  } else if (mid.fig - low.fig >= 14 && high.fig - mid.fig < 14) {
+  } else if (mid.val - low.val >= 14 && high.val - mid.val < 14) {
     const [hr, hg, hb] = high.hex
     const [mr, mg, mb] = mid.hex
 
@@ -73,3 +71,10 @@ const getResultColors = (r: Color, g: Color, b: Color) => {
 }
 
 export default getResultColors
+
+function toHex(colorData: Color, mainIdx: number) {
+  const mainColorHex = colorData[mainIdx]
+  return colorData.map((color, idx) =>
+    idx === mainIdx ? color : (mainColorHex * color) / 100
+  )
+}

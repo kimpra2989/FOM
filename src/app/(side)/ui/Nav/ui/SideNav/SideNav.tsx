@@ -1,8 +1,13 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { FC } from 'react'
 import { container, linkContainer, linkItem, logo } from './sideNav.css'
 
-const SideNav = () => {
+interface Props {
+  isOpen: boolean
+}
+
+const SideNav: FC<Props> = ({ isOpen }) => {
   const currentPathname = usePathname()
   const isActive = (href: string) => currentPathname.slice(1).startsWith(href)
 
@@ -14,7 +19,7 @@ const SideNav = () => {
   ]
 
   return (
-    <nav className={container}>
+    <aside className={container({ status: isOpen ? 'open' : 'close' })}>
       <div className={logo} />
 
       <div className={linkContainer}>
@@ -30,7 +35,7 @@ const SideNav = () => {
           </Link>
         ))}
       </div>
-    </nav>
+    </aside>
   )
 }
 
