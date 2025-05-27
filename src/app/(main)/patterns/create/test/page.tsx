@@ -1,6 +1,6 @@
 'use client'
 
-import { Slider } from '#/app/ui'
+import { Slider } from '#/ui'
 import { produce } from 'immer'
 import {
   ChangeEvent,
