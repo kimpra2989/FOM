@@ -1,4 +1,3 @@
-import { container } from './layout.css'
 import { Nav } from './ui'
 
 export default function RootLayout({
@@ -9,7 +8,7 @@ export default function RootLayout({
   return (
     <>
       <Nav />
-      <main className={container}>{children}</main>
+      {children}
     </>
   )
 }
