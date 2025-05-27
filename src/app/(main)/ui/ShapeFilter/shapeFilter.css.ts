@@ -11,7 +11,7 @@ const checkedStyles = style({
   selectors: {
     'input:checked + &': {
       backgroundColor: 'white',
-      opacity: '0.32',
+      opacity: '0.96',
     },
   },
 })

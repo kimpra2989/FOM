@@ -6,9 +6,24 @@ const useShapeFilter = () => {
   const [triangleChecked, setTriangleChecked] = useAtom(triangleFilterAtom)
   const [squareChecked, setSquareChecked] = useAtom(squareFilterAtom)
 
-  const toggleCircleChecked = () => setCircleChecked((prev) => !prev)
-  const toggleTriangleChecked = () => setTriangleChecked((prev) => !prev)
-  const toggleSquareChecked = () => setSquareChecked((prev) => !prev)
+  const uncheckAll = () => {
+    setCircleChecked(false)
+    setTriangleChecked(false)
+    setSquareChecked(false)
+  }
+
+  const checkOne = (prev: boolean) => {
+    if (prev) {
+      return false
+    }
+
+    uncheckAll()
+    return true
+  }
+
+  const toggleCircleChecked = () => setCircleChecked(checkOne)
+  const toggleTriangleChecked = () => setTriangleChecked(checkOne)
+  const toggleSquareChecked = () => setSquareChecked(checkOne)
 
   return {
     circleChecked,

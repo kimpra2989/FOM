@@ -1,6 +1,6 @@
 'use client'
 
-import { CheckBoxInput } from '../Input'
+import { CheckBoxInput } from '#/ui'
 import {
   circleStyles,
   filterStyles,
@@ -21,6 +21,7 @@ const ShapeFilter = () => {
 
   return (
     <fieldset aria-label="도형 필터" className={filterStyles}>
+      {/* TODO : 시간 되면 radio로 고치기 */}
       <CheckBoxInput
         label="원"
         checked={circleChecked}
