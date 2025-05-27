@@ -18,14 +18,7 @@ export default function Exp11Page() {
       viewBox={`0 0 ${R * Rows} ${R * Cols}`}
     >
       <defs>
-        <g
-          id="exp1_1"
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="-10 -10 20 20"
-          fill="none"
-        >
+        <g id="exp1_1">
           <path
             d="M 0 -10
              L 0 0
