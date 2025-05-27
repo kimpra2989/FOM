@@ -1,7 +1,7 @@
 'use client'
 
+import { useSidebarStatus } from '#/hooks/nav'
 import Link from 'next/link'
-import { useSidebarStatus } from './hooks'
 import { asideOpenButton, navContainer, navTitle } from './nav.css'
 import { Sidebar } from './ui/Sidebar'
 
