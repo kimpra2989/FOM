@@ -25,5 +25,4 @@ export const asideOpenButton = style({
 
 export const navTitle = style({
   fontWeight: Font.Weight.bold,
-  cursor: 'pointer',
 })
