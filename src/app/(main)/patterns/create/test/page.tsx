@@ -16,6 +16,7 @@ export default function TestPage() {
   const [r, setR] = useState<number[]>([0, 0, 0])
   const [g, setG] = useState<number[]>([0, 0, 0])
   const [b, setB] = useState<number[]>([0, 0, 0])
+  const colors = getResultColors(r, g, b)
   const iHandler =
     (i: number, setState: Dispatch<SetStateAction<number[]>>) =>
     (e: ChangeEvent<HTMLInputElement>) =>
@@ -24,8 +25,6 @@ export default function TestPage() {
           prev[i] = +e.target.value
         })
       )
-
-  const colors = getResultColors(r, g, b)
 
   useEffect(() => {
     setR([
@@ -51,48 +50,49 @@ export default function TestPage() {
         <fieldset className={inputContainer}>
           <legend style={{ marginBottom: '12px' }}>red</legend>
           <Slider
-            label="hue"
-            min={-60}
-            max={0}
+            label="Red"
+            min={0}
+            max={255}
             value={r[0]}
             onChange={iHandler(0, setR)}
           />
-          <Slider label="명도" value={r[1]} onChange={iHandler(1, setR)} />
-          <Slider label="채도" value={r[2]} onChange={iHandler(2, setR)} />
+          <Slider label="green" value={r[1]} onChange={iHandler(1, setR)} />
+          <Slider label="blue" value={r[2]} onChange={iHandler(2, setR)} />
         </fieldset>
         <fieldset className={inputContainer}>
           <legend style={{ marginBottom: '12px' }}>green</legend>
           <Slider
-            label="hue"
-            min={60}
-            max={120}
+            label="Green"
+            min={0}
+            max={255}
             value={g[0]}
             onChange={iHandler(0, setG)}
           />
-          <Slider label="명도" value={g[1]} onChange={iHandler(1, setG)} />
-          <Slider label="채도" value={g[2]} onChange={iHandler(2, setG)} />
+          <Slider label="red" value={g[1]} onChange={iHandler(1, setG)} />
+          <Slider label="blue" value={g[2]} onChange={iHandler(2, setG)} />
         </fieldset>
         <fieldset className={inputContainer}>
           <legend style={{ marginBottom: '12px' }}>blue</legend>
           <Slider
-            label="hue"
-            min={180}
-            max={240}
+            label="Blue"
+            min={0}
+            max={255}
             value={b[0]}
             onChange={iHandler(0, setB)}
           />
-          <Slider label="명도" value={b[1]} onChange={iHandler(1, setB)} />
-          <Slider label="채도" value={b[2]} onChange={iHandler(2, setB)} />
+          <Slider label="red" value={b[1]} onChange={iHandler(1, setB)} />
+          <Slider label="green" value={b[2]} onChange={iHandler(2, setB)} />
         </fieldset>
       </section>
       <section className={right}>
         {colors.map((color) => {
+          console.log('color', color)
           const { color: c, r, g, b } = color
           return (
             <div
               className={colorBox}
               style={{ backgroundColor: `rgb(${r}, ${g}, ${b})` }}
-              key={`${r}${g}${b}`}
+              key={c}
             >
               from : {c}
               <br />r : {r}
