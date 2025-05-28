@@ -1,34 +1,30 @@
 'use client'
 
+import { Slider } from '#/ui'
 import { produce } from 'immer'
 import { useState } from 'react'
-import { questions as baseQuestions, commonQuestions } from '../../constants'
+import { questions as baseQuestions } from '../../constants'
 import { useCarousel } from '../../hooks'
 import { QuestionType } from '../../types'
-import { Question } from './Question'
-import {
-  carouselCount,
-  embla,
-  emblaContainer,
-  emblaViewport,
-} from './questions.css'
+import { embla, emblaContainer, emblaViewport } from './questions.css'
 import { AnswersType } from './types'
-import { Slider } from '#/ui'
+import { Question, StatusCircle } from './ui'
 
 const Questions = () => {
-  const Question_Count = 9
-
   // 응답 관리
   const [questions, setQuestions] = useState<(QuestionType | string[])[]>([
     baseQuestions.Red1,
     baseQuestions.Red2[0],
-    commonQuestions,
+    baseQuestions.Red1,
+    // commonQuestions,
     baseQuestions.Green1,
     baseQuestions.Green2[0],
-    commonQuestions,
+    baseQuestions.Green1,
+    // commonQuestions,
     baseQuestions.Blue1,
     baseQuestions.Blue2[0],
-    commonQuestions,
+    baseQuestions.Blue1,
+    // commonQuestions,
   ])
 
   // eslint-disable-next-line
@@ -58,18 +54,11 @@ const Questions = () => {
     }
   }
 
-  // eslint-disable-next-line
-  const { ref, currentSlideIdx, scrollNext, scrollTo } = useCarousel()
-
-  // TODO: 색상이 동기화 되지 않는 버그 수정
-  const questionColor =
-    currentSlideIdx < 3 ? 'Red' : currentSlideIdx < 6 ? 'Green' : 'Blue'
+  const { ref, currentSlideIdx, scrollNext } = useCarousel()
 
   return (
     <section className={embla}>
-      <span className={carouselCount({ background: questionColor })}>
-        {currentSlideIdx + 1 + ' / ' + Question_Count}
-      </span>
+      <StatusCircle currentSlideIdx={currentSlideIdx} />
       <div className={emblaViewport} ref={ref}>
         <div className={emblaContainer}>
           {questions.map((question, idx) =>
