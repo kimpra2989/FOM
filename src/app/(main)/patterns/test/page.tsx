@@ -9,6 +9,9 @@ export default function Test2Page() {
       <Link href={'./test/exp11'}>경험 1 - 1</Link>
       <Link href={'./test/exp12'}>경험 1 - 2</Link>
       <Link href={'./test/exp13'}>경험 1 - 3</Link>
+      <Link href={'./test/exp21'}>경험 2 - 1</Link>
+      <Link href={'./test/exp22'}>경험 2 - 2</Link>
+      <Link href={'./test/exp23'}>경험 2 - 3</Link>
     </div>
   )
 }
