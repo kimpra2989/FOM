@@ -1,5 +1,6 @@
 'use client'
 
+import { useBeforeUnload } from '#/hooks/useBeforeUnload'
 import { Slider } from '#/ui'
 import { produce } from 'immer'
 import { useState } from 'react'
@@ -11,6 +12,8 @@ import { AnswersType } from './types'
 import { Question, StatusCircle } from './ui'
 
 const Questions = () => {
+  useBeforeUnload()
+  
   // 응답 관리
   const [questions, setQuestions] = useState<(QuestionType | string[])[]>([
     baseQuestions.Red1,
