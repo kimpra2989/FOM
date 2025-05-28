@@ -2,7 +2,7 @@
 
 import { produce } from 'immer'
 import { useState } from 'react'
-import { questions as baseQuestions } from '../../constants'
+import { questions as baseQuestions, commonQuestions } from '../../constants'
 import { useCarousel } from '../../hooks'
 import { QuestionType } from '../../types'
 import { Question } from './Question'
@@ -13,19 +13,23 @@ import {
   emblaViewport,
 } from './questions.css'
 import { AnswersType } from './types'
+import { Slider } from '#/ui'
 
 const Questions = () => {
   const Question_Count = 9
 
   // 응답 관리
-  const [questions, setQuestions] = useState<QuestionType[]>(() => {
-    const initialQuestion = new Array(Question_Count)
-    initialQuestion[0] = baseQuestions.Red1
-    initialQuestion[3] = baseQuestions.Green1
-    initialQuestion[6] = baseQuestions.Blue1
-
-    return initialQuestion
-  })
+  const [questions, setQuestions] = useState<(QuestionType | string[])[]>([
+    baseQuestions.Red1,
+    baseQuestions.Red2[0],
+    commonQuestions,
+    baseQuestions.Green1,
+    baseQuestions.Green2[0],
+    commonQuestions,
+    baseQuestions.Blue1,
+    baseQuestions.Blue2[0],
+    commonQuestions,
+  ])
 
   // eslint-disable-next-line
   const [answers, setAnswers] = useState<AnswersType>(
@@ -68,14 +72,18 @@ const Questions = () => {
       </span>
       <div className={emblaViewport} ref={ref}>
         <div className={emblaContainer}>
-          {questions.map((question, idx) => (
-            <Question
-              setAnswer={setNthAnswer(idx)}
-              scrollNext={scrollNext}
-              {...question}
-              key={idx}
-            />
-          ))}
+          {questions.map((question, idx) =>
+            Array.isArray(question) ? (
+              <Slider label={question[0]} key={question[0]} />
+            ) : (
+              <Question
+                setAnswer={setNthAnswer(idx)}
+                scrollNext={scrollNext}
+                {...question}
+                key={idx}
+              />
+            )
+          )}
         </div>
       </div>
     </section>

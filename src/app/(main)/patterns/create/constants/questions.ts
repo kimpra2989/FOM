@@ -122,3 +122,9 @@ export const questions = {
     },
   ],
 } satisfies QuestionsType
+
+export const commonQuestions = [
+  '그 감정의 감정정도를 측정해주세요.',
+  '경험 당시, 그 감정을 어떻게 대처했나요?',
+  '그 경험 속에서, 당신이 느낀 감정을 어떻게 다루나요?',
+]
