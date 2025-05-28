@@ -86,7 +86,6 @@ export default function TestPage() {
       </section>
       <section className={right}>
         {colors.map((color) => {
-          console.log('color', color)
           const { color: c, r, g, b } = color
           return (
             <div

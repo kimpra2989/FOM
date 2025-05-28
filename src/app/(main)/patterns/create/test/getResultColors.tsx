@@ -7,26 +7,30 @@ type HexColor = {
 }
 
 const getResultColors = (r: Color, g: Color, b: Color) => {
-  const rHex = toHex(r, 0)
-  const gHex = toHex(g, 1)
-  const bHex = toHex(b, 2)
+  const [rr, rg, rb] = r
+  const [gg, gr, gb] = g
+  const [bb, br, bg] = b
+
+  const rHex = toHex([rr, rg, rb], 0)
+  const gHex = toHex([gr, gg, gb], 1)
+  const bHex = toHex([br, bg, bb], 2)
 
   const getHexPercent = (hex: number) => +(hex / 255).toFixed(3) * 100
 
   const pq = [
     {
       color: 'red',
-      val: getHexPercent(r[0]),
+      val: getHexPercent(rr),
       hex: rHex,
     },
     {
       color: 'green',
-      val: getHexPercent(g[1]),
+      val: getHexPercent(gg),
       hex: gHex,
     },
     {
       color: 'blue',
-      val: getHexPercent(b[2]),
+      val: getHexPercent(bb),
       hex: bHex,
     },
   ]
@@ -38,9 +42,9 @@ const getResultColors = (r: Color, g: Color, b: Color) => {
   const res: HexColor[] = [
     {
       color: 'black',
-      r: ~~((rHex[0] + gHex[0] + bHex[0]) / 3),
-      g: ~~((rHex[1] + gHex[1] + bHex[1]) / 3),
-      b: ~~((rHex[2] + gHex[2] + bHex[2]) / 3),
+      r: ~~((rr + gr + br) / 3),
+      g: ~~((rg + gg + bg) / 3),
+      b: ~~((rb + gb + bb) / 3),
     },
   ]
 
