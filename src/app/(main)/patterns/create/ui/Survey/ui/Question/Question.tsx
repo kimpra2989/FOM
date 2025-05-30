@@ -19,6 +19,7 @@ interface Props extends CommonQuestionType {
   scrollNext: CarouselHookReturnType['scrollNext']
   setAnswer: (value: number) => void
   color?: QuestionColorType
+  sliderValue?: number
 }
 
 const Question: FC<Props> = ({
@@ -27,6 +28,7 @@ const Question: FC<Props> = ({
   color,
   setAnswer,
   scrollNext,
+  sliderValue,
 }) => {
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setAnswer(+e.target.value)
@@ -44,6 +46,7 @@ const Question: FC<Props> = ({
     onMouseUp: handleMouseUp,
     min: 0,
     label: question,
+    value: sliderValue,
   }
 
   return (

@@ -26,7 +26,6 @@ const Slider: React.FC<Props> = ({
         max={max}
         step={step}
         value={value}
-        defaultValue={(+min + +max) / 2}
         onChange={onChange}
         {...props}
       />

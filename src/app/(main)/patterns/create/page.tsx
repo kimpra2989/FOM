@@ -11,7 +11,13 @@ export default function CreatePatternPage() {
   const { questions, setNthAnswer, answers } = useSurvey(shiftToResultPhase)
 
   if (phase === 'survey')
-    return <SurveyStep questions={questions} setNthAnswer={setNthAnswer} />
+    return (
+      <SurveyStep
+        questions={questions}
+        answer={answers as number[]}
+        setNthAnswer={setNthAnswer}
+      />
+    )
   if (phase === 'loading') return <LoadingStep />
   if (phase === 'result') return <ResultStep answer={answers as number[]} />
 }

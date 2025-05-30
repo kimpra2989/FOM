@@ -8,10 +8,11 @@ import { Question, StatusCircle } from './ui'
 
 interface Props {
   questions: (QuestionType | CommonQuestionType)[]
+  answer: number[]
   setNthAnswer: (idx: number) => (value: number) => void
 }
 
-const SurveyStep: FC<Props> = ({ questions, setNthAnswer }) => {
+const SurveyStep: FC<Props> = ({ questions, answer, setNthAnswer }) => {
   const { ref, currentSlideIdx, scrollNext } = useCarousel()
 
   return (
@@ -26,6 +27,7 @@ const SurveyStep: FC<Props> = ({ questions, setNthAnswer }) => {
             <Question
               setAnswer={setNthAnswer(idx)}
               scrollNext={scrollNext}
+              sliderValue={answer[idx]}
               {...question}
               key={idx}
             />
