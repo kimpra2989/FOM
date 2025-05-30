@@ -43,6 +43,7 @@ const ResultStep: FC<Props> = ({ answer }) => {
           </div>
         </div>
       </div>
+      <img className={print} src="/pattern0.png" alt="pattern" />
     </>
   )
 }

@@ -1,5 +1,24 @@
 import { flexCenter } from '#/utils/styles'
-import { style } from '@vanilla-extract/css'
+import { globalStyle, style } from '@vanilla-extract/css'
+
+globalStyle('html, body', {
+  '@media': {
+    print: {
+      visibility: 'hidden',
+    },
+  },
+})
+
+export const print = style({
+  '@media': {
+    print: {
+      visibility: 'visible',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+    },
+  },
+})
 
 export const buttons = style({
   width: '300px',
