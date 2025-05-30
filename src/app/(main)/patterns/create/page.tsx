@@ -13,5 +13,5 @@ export default function CreatePatternPage() {
   if (phase === 'survey')
     return <SurveyStep questions={questions} setNthAnswer={setNthAnswer} />
   if (phase === 'loading') return <LoadingStep />
-  if (phase === 'result') return <ResultStep answer={answers} />
+  if (phase === 'result') return <ResultStep answer={answers as number[]} />
 }

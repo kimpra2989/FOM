@@ -29,18 +29,18 @@ export default function TestPage() {
   useEffect(() => {
     setR([
       ~~(Math.random() * 255),
-      ~~(Math.random() * 100),
-      ~~(Math.random() * 100),
+      ~~(Math.random() * 254 * 3),
+      ~~(Math.random() * 254 * 3),
     ])
     setG([
       ~~(Math.random() * 255),
-      ~~(Math.random() * 100),
-      ~~(Math.random() * 100),
+      ~~(Math.random() * 254 * 3),
+      ~~(Math.random() * 254 * 3),
     ])
     setB([
       ~~(Math.random() * 255),
-      ~~(Math.random() * 100),
-      ~~(Math.random() * 100),
+      ~~(Math.random() * 254 * 3),
+      ~~(Math.random() * 254 * 3),
     ])
   }, [setR, setG, setB])
 
@@ -56,8 +56,18 @@ export default function TestPage() {
             value={r[0]}
             onChange={iHandler(0, setR)}
           />
-          <Slider label="green" value={r[1]} onChange={iHandler(1, setR)} />
-          <Slider label="blue" value={r[2]} onChange={iHandler(2, setR)} />
+          <Slider
+            label="Red Sub1"
+            max={254 * 3}
+            value={r[1]}
+            onChange={iHandler(1, setR)}
+          />
+          <Slider
+            label="Red Sub2"
+            max={254 * 3}
+            value={r[2]}
+            onChange={iHandler(2, setR)}
+          />
         </fieldset>
         <fieldset className={inputContainer}>
           <legend style={{ marginBottom: '12px' }}>green</legend>
@@ -68,8 +78,18 @@ export default function TestPage() {
             value={g[0]}
             onChange={iHandler(0, setG)}
           />
-          <Slider label="red" value={g[1]} onChange={iHandler(1, setG)} />
-          <Slider label="blue" value={g[2]} onChange={iHandler(2, setG)} />
+          <Slider
+            label="Green Sub1"
+            max={254 * 3}
+            value={g[1]}
+            onChange={iHandler(1, setG)}
+          />
+          <Slider
+            label="Green Sub1"
+            max={254 * 3}
+            value={g[2]}
+            onChange={iHandler(2, setG)}
+          />
         </fieldset>
         <fieldset className={inputContainer}>
           <legend style={{ marginBottom: '12px' }}>blue</legend>
@@ -80,8 +100,18 @@ export default function TestPage() {
             value={b[0]}
             onChange={iHandler(0, setB)}
           />
-          <Slider label="red" value={b[1]} onChange={iHandler(1, setB)} />
-          <Slider label="green" value={b[2]} onChange={iHandler(2, setB)} />
+          <Slider
+            label="Blue Sub1"
+            max={254 * 3}
+            value={b[1]}
+            onChange={iHandler(1, setB)}
+          />
+          <Slider
+            label="Blue Sub1"
+            max={254 * 3}
+            value={b[2]}
+            onChange={iHandler(2, setB)}
+          />
         </fieldset>
       </section>
       <section className={right}>
