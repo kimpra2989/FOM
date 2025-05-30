@@ -4,7 +4,7 @@ import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures'
 import { useEffect, useState } from 'react'
 
 const useCarousel = () => {
-  const options: EmblaOptionsType = { axis: 'y' }
+  const options: EmblaOptionsType = { axis: 'y', watchDrag: false }
 
   const [emblaRef, emblaApi] = useEmblaCarousel(options, [
     WheelGesturesPlugin(),
