@@ -9,14 +9,14 @@ import {
   useEffect,
   useState,
 } from 'react'
-import getResultColors from './getResultColors'
+import { processColor } from '../ui/Result/processResult'
 import { colorBox, container, inputContainer, left, right } from './page.css'
 
 export default function TestPage() {
   const [r, setR] = useState<number[]>([0, 0, 0])
   const [g, setG] = useState<number[]>([0, 0, 0])
   const [b, setB] = useState<number[]>([0, 0, 0])
-  const colors = getResultColors(r, g, b)
+  const colors = processColor(r, g, b)
   const iHandler =
     (i: number, setState: Dispatch<SetStateAction<number[]>>) =>
     (e: ChangeEvent<HTMLInputElement>) =>

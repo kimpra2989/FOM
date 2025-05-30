@@ -27,7 +27,7 @@ function processResult(answer: number[]) {
 
 export default processResult
 
-function processColor(r: number[], g: number[], b: number[]) {
+export function processColor(r: number[], g: number[], b: number[]) {
   const [rMain, r1, r2] = r
   const [gMain, g1, g2] = g
   const [bMain, b1, b2] = b
@@ -97,8 +97,9 @@ function processColor(r: number[], g: number[], b: number[]) {
 
 function toHex(colorData: Color, mainIdx: number) {
   const result = [0, 0, 0]
-  result[mainIdx] = colorData[mainIdx]
-  const subValues = colorData.filter((v, i) => i !== mainIdx)
+  const maxHex = colorData[0]
+  result[mainIdx] = maxHex
+  const subValues = colorData.slice(1)
 
   // 더 해질 값 계산
   const toAdd = [0, 0, 0] // [r, g, b]
@@ -108,17 +109,15 @@ function toHex(colorData: Color, mainIdx: number) {
     } else if (subValue < 510) {
       toAdd[1] += subValue - 255
     } else {
-      toAdd[2] += subValue - 510
+      toAdd[2] += subValue - 255 * 2
     }
   })
 
-  result[mainIdx] = Math.min(255, colorData[mainIdx] + toAdd[mainIdx])
+  result[mainIdx] = Math.min(255, maxHex + toAdd[mainIdx])
   toAdd.forEach((v, i) => {
     if (i === mainIdx) return
 
-    const mainHex = result[mainIdx]
-
-    result[i] = ~~((Math.min(255, toAdd[i]) / 255) * mainHex)
+    result[i] = ~~((Math.min(255, toAdd[i]) / 255) * maxHex)
   })
 
   return result
