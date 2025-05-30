@@ -5,7 +5,7 @@ import { fullScreen } from '#/styles/styles'
 import { Square } from '#/ui'
 import { Circle, Triangle } from '#/ui/canvas'
 import Konva from 'konva'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Layer, Stage } from 'react-konva'
 import { ShapeFilter } from './ui'
 
@@ -57,11 +57,21 @@ function ElasticGrid() {
   const stageRef = useRef<Konva.Stage>(null)
   const { cursor, handleMouseOut, handleMouseOver } = useCursor()
 
+  const [width, setWidth] = useState<number>(0)
+  const [height, setHeight] = useState<number>(0)
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setWidth(window.innerWidth)
+      setHeight(window.innerHeight)
+    }
+  }, [])
+
   return (
     <Stage
       className={fullScreen}
-      width={window.innerWidth}
-      height={window.innerHeight}
+      width={width}
+      height={height}
       ref={stageRef}
       draggable
       style={{ cursor }}
