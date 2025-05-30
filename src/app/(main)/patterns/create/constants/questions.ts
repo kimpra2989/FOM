@@ -1,6 +1,6 @@
-import { QuestionsType } from '../types'
+import { CommonQuestionType, QuestionsType } from "../types"
 
-export const questions = {
+export const QUESTIONS = {
   Red1: {
     question: '당신에게 어떤 경험이 가장 깊게 남았나요?',
     answers: [
@@ -123,8 +123,29 @@ export const questions = {
   ],
 } satisfies QuestionsType
 
-export const commonQuestions = [
-  '그 감정의 감정정도를 측정해주세요.',
-  '경험 당시, 그 감정을 어떻게 대처했나요?',
-  '그 경험 속에서, 당신이 느낀 감정을 어떻게 다루나요?',
-]
+export const CommonQuestions = [
+  {
+    question: '그 감정의 감정정도를 측정해주세요.',
+    answers: [
+      '무슨 감정인지 정확히 알 수 있었다.',
+      '어렴풋이 뭔가 느꼈지만, 잘 설명은 못 하겠다.',
+      '감정은 있었지만 명확하지 않고 다른 감정과 섞여 있었다.',
+    ],
+  },
+  {
+    question: '경험 당시, 그 감정을 어떻게 대처했나요?',
+    answers: [
+      '감정이 우선적으로 반응하고, 깊이 빠져드는 편이다',
+      '감정을 인식하되, 생각으로 조절하려고 한다.',
+      '감정보다는 상황을 분석하며 이성적으로 정리한다.',
+    ],
+  },
+  {
+    question: '그 경험 속에서, 당신이 느낀 감정을 어떻게 다루나요?',
+    answers: [
+      '감정을 강하게 느꼈고, 밖으로 표현하고 싶었다.',
+      '감정을 느끼긴 했지만, 그 상황에서 특별히 표현하거나 숨기지도 않았다.',
+      '감정을 조용히, 내 안에서 곱씹었고 겉으로 드러내지 않았다.',
+    ],
+  },
+] satisfies CommonQuestionType[]

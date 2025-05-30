@@ -3,9 +3,12 @@ export type QuestionsType = Record<
   QuestionType | QuestionType[]
 >
 
-export interface QuestionType {
+export interface CommonQuestionType {
   question: string
   answers: [string, string, string]
+}
+
+export interface QuestionType extends CommonQuestionType {
   color: QuestionColorType
 }
 

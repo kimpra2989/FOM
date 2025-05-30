@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 
-export const useBeforeUnload = () => {
+const useBeforeUnload = () => {
   // TODO: 다른 페이지로 이동하는 경우 추가해야함
-  
+
   useEffect(() => {
     const handleBeforeUnload = (e: BeforeUnloadEvent) => {
       e.preventDefault()
@@ -28,3 +28,5 @@ export const useBeforeUnload = () => {
     }
   }, [])
 }
+
+export default useBeforeUnload
