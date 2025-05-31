@@ -1,21 +1,27 @@
+import { useMemo } from 'react'
+
 export default function Exp11Page() {
-  const Rows = 4
-  const Cols = 4
-  const R = 10
-  const points = Array.from({ length: Rows }, (_, row) =>
-    Array.from({ length: Cols }, (_, col) => ({
-      x: row * R,
-      y: col * R,
-      angle: Math.floor(Math.random() * 4) * 90,
-    }))
+  const Rows = 10
+  const Cols = 10
+  const Spacing = 10
+  const points = useMemo(
+    () =>
+      Array.from({ length: Rows + 1 }, (_, row) =>
+        Array.from({ length: Cols + 1 }, (_, col) => ({
+          x: row * Spacing,
+          y: col * Spacing,
+          angle: Math.floor(Math.random() * 4) * 90,
+        }))
+      ),
+    []
   )
 
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="100"
-      height="100"
-      viewBox={`0 0 ${R * Rows} ${R * Cols}`}
+      width="300"
+      height="300"
+      viewBox="0 0 100 100"
     >
       <defs>
         <g id="exp1_1">
@@ -60,7 +66,7 @@ export default function Exp11Page() {
             x={x}
             y={y}
             transform={`rotate(${angle} ${x} ${y})`}
-            key={'' + x + y}
+            key={`${x}-${y}`}
           />
         ))
       )}
