@@ -37,7 +37,6 @@ export const logo = style({
   width: '24px',
   height: '24px',
   border: '0',
-  backgroundColor: 'white',
   margin: '20px',
   marginBottom: '34px',
 })

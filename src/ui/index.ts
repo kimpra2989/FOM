@@ -1,3 +1,3 @@
+export * from './canvas'
 export * from './Input'
-export * from './shapes'
 export * from './slider'

@@ -9,10 +9,15 @@ function useSidebarStatus() {
     if (!isSidebarOpen) return
 
     const closeSidebar = (e: MouseEvent) => {
-      if (e.target instanceof HTMLButtonElement) return
-      if (e.target instanceof HTMLElement && e.target.tagName !== 'ASIDE') {
-        setIsSidebarOpen(false)
+      const { target } = e
+      if (
+        target instanceof HTMLElement &&
+        (target.tagName === 'ASIDE' ||
+          target.closest('button[name="openSidebar"]'))
+      ) {
+        return
       }
+      setIsSidebarOpen(false)
     }
 
     window.addEventListener('click', closeSidebar)

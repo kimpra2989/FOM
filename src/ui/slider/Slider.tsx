@@ -14,6 +14,7 @@ const Slider: React.FC<Props> = ({
   value,
   onChange,
   label,
+  ...props
 }) => {
   return (
     <div className={container}>
@@ -26,6 +27,7 @@ const Slider: React.FC<Props> = ({
         step={step}
         value={value}
         onChange={onChange}
+        {...props}
       />
       <span style={{ width: '20px', height: '20px' }}>{value}</span>
     </div>

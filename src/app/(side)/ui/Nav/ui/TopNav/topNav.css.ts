@@ -23,8 +23,8 @@ export const navTitle = style({
 })
 
 export const asideOpenButton = style({
-  width: '24px',
-  height: '24px',
+  width: '31px',
+  height: '34px',
   border: '0',
-  backgroundColor: 'white',
+  zIndex: ZIndex.SIDEBAR,
 })
