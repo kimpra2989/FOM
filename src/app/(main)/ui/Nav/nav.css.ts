@@ -1,4 +1,4 @@
-import { Font, NavHeight, ZIndex } from '#/styles/vars'
+import { NavHeight, ZIndex } from '#/styles/vars'
 import { style } from '@vanilla-extract/css'
 
 export const navContainer = style({
@@ -17,12 +17,7 @@ export const navContainer = style({
 })
 
 export const asideOpenButton = style({
-  width: '24px',
-  height: '24px',
+  width: '31px',
+  height: '34px',
   border: '0',
-  backgroundColor: 'white'
-})
-
-export const navTitle = style({
-  fontWeight: Font.Weight.bold,
 })
