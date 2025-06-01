@@ -22,11 +22,7 @@ const CanvasModal: FC<Props> = ({ closeModal, nextPattern, textureUrl }) => {
       transition={{ duration: 0.3 }}
       className={canvasStyle}
     >
-      <Canvas
-        gl={{ alpha: true }}
-        height={window.innerHeight}
-        styles={{ backgroundColor: 'transparent' }}
-      >
+      <Canvas gl={{ alpha: true }} styles={{ backgroundColor: 'transparent' }}>
         <Scene textureUrl={textureUrl} />
       </Canvas>
       <div className={buttonWrapper}>
