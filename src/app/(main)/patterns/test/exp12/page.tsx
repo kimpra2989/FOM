@@ -1,7 +1,9 @@
+import { svgProps } from '../constants'
+
 export default function Exp11Page() {
-  const Rows = 4
-  const Cols = 4
   const Len = 30
+  const Rows = Math.floor(svgProps.width / Len)
+  const Cols = Math.floor(svgProps.height / Len)
   const points = Array.from({ length: Rows }, (_, row) =>
     Array.from({ length: Cols }, (_, col) => ({
       x: row * Len,
@@ -11,12 +13,7 @@ export default function Exp11Page() {
   )
 
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="100"
-      height="100"
-      viewBox={`0 0 ${Len * Rows} ${Len * Cols}`}
-    >
+    <svg {...svgProps}>
       <defs>
         <g id="exp1_2">
           <path
