@@ -7,6 +7,9 @@ export default function Exp21Page() {
   const UnitHeight = 25
   const Scale = 5.5 / 10
 
+  const Rows = Math.ceil(svgProps.height / UnitHeight)
+  const Cols = Math.ceil(svgProps.width / UnitWidth) +1
+
   return (
     <svg {...svgProps} width={svgProps.width * 1.5} height={210 * 1.5}>
       <defs>
@@ -26,54 +29,28 @@ export default function Exp21Page() {
         </g>
       </defs>
 
-      <defs>
-        <pattern
-          id="line2_3"
-          width={UnitWidth}
-          height={UnitHeight}
-          patternUnits="userSpaceOnUse"
-        >
-          <use href="#exp2_3" x={UnitWidth / 2 - ShapeWidth / 2} y="2" />
+      {Array.from({ length: Rows }).map((_, rowIdx) =>
+        Array.from({ length: Cols }).map((_, colIdx) => {
+          const offsetX = rowIdx % 2 === 0 ? 0 : -UnitWidth / 2
+          const x = colIdx * UnitWidth + offsetX
+          const y = rowIdx * UnitHeight
 
-          <use
-            href="#exp2_3_small_rotated"
-            x={UnitWidth - (ShapeHeight * Scale) / 2}
-            y={2 + ShapeHeight / 2 - (ShapeWidth / 2) * Scale}
-          />
-
-          <use
-            href="#exp2_3_small_rotated"
-            x={(-ShapeHeight * Scale) / 2}
-            y={2 + ShapeHeight / 2 - (ShapeWidth / 2) * Scale}
-          />
-        </pattern>
-
-        <pattern
-          id="p2_3"
-          width={svgProps.width}
-          height={UnitHeight * 2}
-          patternUnits="userSpaceOnUse"
-        >
-          <rect
-            x="0"
-            y="0"
-            width={svgProps.width}
-            height={UnitHeight}
-            fill="url(#line2_3)"
-          />
-          <g transform={`translate(${-UnitWidth / 2}, 0)`}>
-            <rect
-              x="0"
-              y={UnitHeight}
-              width={svgProps.width + UnitWidth}
-              height={UnitHeight + 5 * 2}
-              fill="url(#line2_3)"
-            />
-          </g>
-        </pattern>
-      </defs>
-
-      <rect width={svgProps.width} height={svgProps.height} fill="url(#p2_3)" />
+          return (
+            <g key={`${rowIdx}_${colIdx}`}>
+              <use
+                href="#exp2_3"
+                x={x + UnitWidth / 2 - ShapeWidth / 2}
+                y={y + 2}
+              />
+              <use
+                href="#exp2_3_small_rotated"
+                x={x + (-ShapeHeight * Scale) / 2}
+                y={y + 2 + ShapeHeight / 2 - (ShapeWidth / 2) * Scale}
+              />
+            </g>
+          )
+        })
+      )}
     </svg>
   )
 }
