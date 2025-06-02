@@ -7,7 +7,11 @@ export default function Exp11Page() {
   return (
     <svg {...svgProps} width={297 * 1.5} height={210 * 1.5}>
       <defs>
-        <g id="exp2_3">
+        <g
+          id="exp2_3"
+          transform={`translate(${Height} 0) 
+                  rotate(90)`}
+        >
           <g clip-path="url(#clip0_331_2433)">
             <path
               opacity="0.25"
@@ -32,18 +36,12 @@ export default function Exp11Page() {
         </g>
 
         <pattern
-          id="line2_3"
+          id="exp2_3_line"
           width={Width * 2}
           height={Height + 5 * 2}
           patternUnits="userSpaceOnUse"
         >
-          <use
-            href="#exp2_3"
-            x="0"
-            y="0"
-            transform={`translate(${Height} 0) 
-                  rotate(90)`}
-          />
+          <use href="#exp2_3" />
         </pattern>
 
         <pattern
@@ -57,14 +55,15 @@ export default function Exp11Page() {
             y="0"
             width={297}
             height={Height + 5 * 2}
-            fill="url(#line2_3)"
+            fill="url(#exp2_3_line)"
           />
+          
           <g transform={`translate(${-Width}, 0)`}>
             <rect
               y={Height + 5 * 2}
               width={297}
               height={Height + 5 * 2}
-              fill="url(#line2_3)"
+              fill="url(#exp2_3_line)"
             />
           </g>
         </pattern>
