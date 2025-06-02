@@ -3,6 +3,8 @@ import { svgProps } from '../constants'
 export default function Cul31Page() {
   const Width = 20
   const Height = 20
+  const Rows = Math.ceil(svgProps.width / Width)
+  const Cols = Math.ceil(svgProps.height / Height)
 
   return (
     <svg {...svgProps}>
@@ -27,56 +29,35 @@ export default function Cul31Page() {
             />
           ))}
         </g>
+
+        <rect id="black_box" width={Width} height={Height} />
+        <rect id="white_box" width={Width} height={Height} opacity={0} />
       </defs>
 
-      <defs>
-        <pattern
-          id="cul3_1_line"
-          width={Width * 4}
-          height={Height}
-          patternUnits="userSpaceOnUse"
-        >
-          <rect width={Width} height={Height} />
-          <use href="#cul3_1" x={Width} />
-          <rect width={Width} height={Height} opacity={0} />
-          <use href="#cul3_1" x={Width * 3} />
-        </pattern>
-      </defs>
+      {Array.from({ length: Rows }).map((_, rowIdx) =>
+        Array.from({ length: Cols }).map((_, colIdx) => {
+          let tileIdx = (colIdx - rowIdx) % 4
+          if (tileIdx < 0) tileIdx += 4
 
-      <defs>
-        <pattern
-          id="cul3_1_p"
-          width={svgProps.width}
-          height={Height * 3}
-          patternUnits="userSpaceOnUse"
-        >
-          <rect
-            width={svgProps.width}
-            height={Height}
-            fill="url(#cul3_1_line)"
-          />
-          <g transform={`translate(${Width}, ${Height})`}>
-            <rect
-              width={svgProps.width}
-              height={Height}
-              fill="url(#cul3_1_line)"
+          let tileId
+          if (tileIdx % 4 === 0) {
+            tileId = 'black_box'
+          } else if (tileIdx % 4 === 2) {
+            tileId = 'white_box'
+          } else {
+            tileId = `cul3_1`
+          }
+
+          return (
+            <use
+              href={'#' + tileId}
+              x={colIdx * Width}
+              y={rowIdx * Height}
+              key={`${rowIdx}_${colIdx}`}
             />
-          </g>
-          <g transform={`translate(${Width * 2}, ${Height * 2})`}>
-            <rect
-              width={svgProps.width}
-              height={Height}
-              fill="url(#cul3_1_line)"
-            />
-          </g>
-        </pattern>
-      </defs>
-
-      <rect
-        width={svgProps.width}
-        height={svgProps.height}
-        fill="url(#cul3_1_p)"
-      />
+          )
+        })
+      )}
     </svg>
   )
 }
