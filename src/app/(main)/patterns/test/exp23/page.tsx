@@ -3,9 +3,10 @@ import { svgProps } from '../constants'
 export default function Exp11Page() {
   const Width = 20
   const Height = 13
+  const Gap = 5 * 2
 
   return (
-    <svg {...svgProps} width={297 * 1.5} height={210 * 1.5}>
+    <svg {...svgProps} width={svgProps.width * 1.5} height={210 * 1.5}>
       <defs>
         <g
           id="exp2_3"
@@ -36,40 +37,17 @@ export default function Exp11Page() {
         </g>
 
         <pattern
-          id="exp2_3_line"
-          width={Width * 2}
-          height={Height + 5 * 2}
+          id="exp2_3p"
+          width={(Height + Gap) * 2}
+          height={Width * 2}
           patternUnits="userSpaceOnUse"
         >
           <use href="#exp2_3" />
-        </pattern>
-
-        <pattern
-          id="p23"
-          width={297}
-          height={(Height + 5 * 2) * 2}
-          patternUnits="userSpaceOnUse"
-        >
-          <rect
-            x="0"
-            y="0"
-            width={297}
-            height={Height + 5 * 2}
-            fill="url(#exp2_3_line)"
-          />
-          
-          <g transform={`translate(${-Width}, 0)`}>
-            <rect
-              y={Height + 5 * 2}
-              width={297}
-              height={Height + 5 * 2}
-              fill="url(#exp2_3_line)"
-            />
-          </g>
+          <use href="#exp2_3" x={Height + Gap} y={Width} />
         </pattern>
       </defs>
 
-      <rect width={297} height={210} fill="url(#p23)" />
+      <rect width={svgProps.width} height={210} fill="url(#exp2_3p)" />
     </svg>
   )
 }
