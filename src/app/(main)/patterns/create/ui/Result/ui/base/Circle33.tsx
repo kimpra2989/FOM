@@ -19,7 +19,7 @@ const Circle33: FC<Props> = ({ color }) => {
   const angles = [0, 90, 180, 270]
 
   return (
-    <SVG fill={color} scale={1.5}>
+    <SVG fill={color}>
       <defs>
         <g id="exp3_3">
           <path

@@ -17,7 +17,7 @@ const Circle21: FC<Props> = ({ color }) => {
   const Cols = Math.ceil(svgProps.width / UnitWidth) + 1
 
   return (
-    <SVG fill={color} scale={1.5}>
+    <SVG fill={color} >
       <defs>
         <g id="exp2_3">
           <path d="M5.16331 10.6711C5.16331 13.3575 2.9862 15.5346 0.299805 15.5346V15.8076C0.299805 18.494 2.47691 20.6712 5.16331 20.6712C7.84971 20.6712 10.0268 18.494 10.0268 15.8076V15.5346C7.34042 15.5346 5.16331 13.3575 5.16331 10.6711Z" />

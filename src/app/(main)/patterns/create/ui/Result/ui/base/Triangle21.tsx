@@ -12,8 +12,8 @@ const Triangle21: FC<Props> = ({ color }) => {
   const UnitWidth = ShapeWidth * 5
   const UnitHeight = ShapeHeight * 5
 
-  const Rows = Math.floor(svgProps.height / UnitHeight)
-  const Cols = Math.floor(svgProps.width / UnitWidth)
+  const Rows = Math.floor(svgProps.height / UnitHeight) + 1
+  const Cols = Math.floor(svgProps.width / UnitWidth) + 1
 
   const rotations = [0, 90, 180, 270]
 

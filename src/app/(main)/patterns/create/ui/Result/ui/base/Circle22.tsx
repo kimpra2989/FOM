@@ -15,7 +15,7 @@ const Circle13: FC<Props> = ({ color }) => {
   )
 
   return (
-    <SVG fill={color} scale={1.5}>
+    <SVG fill={color} >
       <defs>
         <g id="exp2_2">
           <path

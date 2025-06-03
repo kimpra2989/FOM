@@ -12,7 +12,7 @@ const Circle23: FC<Props> = ({ color }) => {
   const Gap = 5 * 2
 
   return (
-    <SVG fill={color} scale={1.5}>
+    <SVG fill={color} >
       <defs>
         <g
           id="exp2_3"

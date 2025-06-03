@@ -50,7 +50,7 @@ const patternMap: Record<string, FC<{ color: string }>> = {
   'red-1-1': Circle22,
   'red-1-2': Circle23,
   'red-2-0': Circle31,
-  // 'red-2-1': Circle32,
+  'red-2-1': Circle31, // 수정 필요
   'red-2-2': Circle33,
 
   // Green → Triangle

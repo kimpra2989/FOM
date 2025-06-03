@@ -12,7 +12,7 @@ const Circle31: FC<Props> = ({ color }) => {
   const Height = 40.16
 
   return (
-    <SVG fill={color} scale={1.5}>
+    <SVG fill={color}>
       <defs>
         <g id="exp3_1">
           <path
@@ -249,6 +249,7 @@ const Circle31: FC<Props> = ({ color }) => {
           height={Height}
           patternUnits="userSpaceOnUse"
         >
+          <use href="#exp3_1" fill="white" />
           <use href="#exp3_1" />
         </pattern>
 
