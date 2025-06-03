@@ -12,8 +12,15 @@ const SVG: FC<Props> = ({ scale = 1, children, fill = 'black' }) => {
       {...svgProps}
       width={svgProps.width * scale}
       height={svgProps.height * scale}
-      fill={fill}
     >
+      <rect width={svgProps.width} height={svgProps.height} fill="white" />
+      <rect
+        width={svgProps.width}
+        height={svgProps.height}
+        fill={fill}
+        opacity={0.8}
+      />
+
       {children}
     </svg>
   )
