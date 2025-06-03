@@ -1,12 +1,18 @@
-import { svgProps } from '../constants'
+import { FC } from 'react'
+import { svgProps } from '../../constants'
+import { SVG } from '../SVG'
 
-export default function Exp11Page() {
+interface Props {
+  color: string
+}
+
+const Circle23: FC<Props> = ({ color }) => {
   const Width = 20
   const Height = 13
   const Gap = 5 * 2
 
   return (
-    <svg {...svgProps} width={svgProps.width * 1.5} height={210 * 1.5}>
+    <SVG fill={color} scale={1.5}>
       <defs>
         <g
           id="exp2_3"
@@ -32,7 +38,7 @@ export default function Exp11Page() {
         </g>
 
         <pattern
-          id="exp2_3p"
+          id="exp2_3_p"
           width={(Height + Gap) * 2}
           height={Width * 2}
           patternUnits="userSpaceOnUse"
@@ -42,7 +48,9 @@ export default function Exp11Page() {
         </pattern>
       </defs>
 
-      <rect width={svgProps.width} height={210} fill="url(#exp2_3p)" />
-    </svg>
+      <rect width={svgProps.width} height={210} fill="url(#exp2_3_p)" />
+    </SVG>
   )
 }
+
+export default Circle23

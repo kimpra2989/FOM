@@ -1,13 +1,18 @@
 import { FC } from 'react'
-import processResult from './processResult'
-import { buttons, colorBox, container, left, print } from './result.css'
+import { getResultPatternData } from './fn'
+import { buttons, container } from './result.css'
+import BasePattern from './ui/BasePattern'
 
 interface Props {
   answer: number[]
 }
 
 const ResultStep: FC<Props> = ({ answer }) => {
-  // const ex = [1, 0, 170, 295, 179, 2, 1, 598, 171, 636, 2, 0, 505, 538, 183]
+  const ex = [2, 2, 125, 591, 591, 1, 2, 154, 658, 568, 1, 1, 175, 587, 531]
+  // const ex2 = [2, 0, 100, 520, 156, 2, 2, 70, 636, 651, 2, 2, 240, 120, 606]
+
+  const { colors, shapes } = getResultPatternData(ex)
+  // const { colors, shapes } = getResultPatternData(answer)
 
   return (
     <>
@@ -16,34 +21,20 @@ const ResultStep: FC<Props> = ({ answer }) => {
       </div>
       <div className={container}>
         <div>
-          <p style={{ marginBottom: '20px' }}>사용되는 색</p>
-          <div className={left}>
-            {processResult(answer).colors.map(({ color, r, g, b }) => (
-              <div
-                className={colorBox}
-                style={{
-                  backgroundColor: `rgb(${r}, ${g}, ${b})`,
-                }}
-                key={color}
-              >
-                {`#${r}${g}${b}`}
-              </div>
-            ))}
-          </div>
-        </div>
-        <hr />
-        <div>
-          <p style={{ marginBottom: '20px' }}>사용되는 도형</p>
-          <div className={left}>
-            {processResult(answer).shapes.map((shape) => (
-              <div className={colorBox} key={'' + shape[0] + shape[1]}>
-                {shape.map((v) => v + 1).join(' - ')}
-              </div>
-            ))}
-          </div>
+          {colors.map((color) =>
+            color.color === 'black' ? (
+              <div key={color.color}>black</div>
+            ) : (
+              <BasePattern
+                color={color.color}
+                hex={color.hex}
+                shape={shapes[color.color]}
+                key={color.color}
+              />
+            )
+          )}
         </div>
       </div>
-      <img className={print} src="/pattern0.png" alt="pattern" />
     </>
   )
 }

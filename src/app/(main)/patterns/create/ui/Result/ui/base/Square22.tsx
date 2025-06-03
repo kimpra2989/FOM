@@ -1,11 +1,17 @@
-import { svgProps } from '../constants'
+import { FC } from 'react'
+import { svgProps } from '../../constants'
+import { SVG } from '../SVG'
 
-export default function Cul22Page() {
+interface Props {
+  color: string
+}
+
+const Square22: FC<Props> = ({ color }) => {
   const Width = 20
   const Height = 20
 
   return (
-    <svg {...svgProps}>
+    <SVG fill={color}>
       <defs>
         <g id="cul2_2">
           <path d="M18.3566 10.2727L18.3315 20.0469L19.9998 20.0511L20.0248 10.277L18.3566 10.2727Z" />
@@ -50,6 +56,7 @@ export default function Cul22Page() {
         height={svgProps.height}
         fill="url(#cul2_2_p)"
       />
-    </svg>
+    </SVG>
   )
 }
+export default Square22

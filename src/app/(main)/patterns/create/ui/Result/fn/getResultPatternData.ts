@@ -8,16 +8,16 @@ function getResultPatternData(answer: number[]) {
   const colors = getColorComposition(r, g, b)
 
   // shape
-  const circle = answer.slice(0, 2)
-  const triangle = answer.slice(5, 7)
-  const square = answer.slice(10, 12)
+  const red = answer.slice(0, 2)
+  const green = answer.slice(5, 7)
+  const blue = answer.slice(10, 12)
 
   return {
     colors,
     shapes: {
-      circle,
-      triangle,
-      square,
+      red,
+      green,
+      blue,
     },
   }
 }

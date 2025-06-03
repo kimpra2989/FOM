@@ -1,6 +1,13 @@
-import { svgProps } from '../constants'
+import { FC } from 'react'
+import { svgProps } from '../../constants'
+import { SVG } from '../SVG'
 
-export default function Cul32Page() {
+interface Props {
+  color: string
+}
+
+// TODO: 배치
+const Square32: FC<Props> = ({ color }) => {
   const UnitWidth = 20
   const UnitHeight = 20
   const ShapeWidth = 3.58 * 3
@@ -8,7 +15,7 @@ export default function Cul32Page() {
   const Gap = 9
 
   return (
-    <svg {...svgProps}>
+    <SVG fill={color}>
       <defs>
         <g id="cul3_2">
           <rect x={0} y={0} width={ShapeWidth / 3} height={ShapeWidth / 3} />
@@ -39,6 +46,7 @@ export default function Cul32Page() {
             x={UnitWidth / 2 - ShapeWidth / 2}
             y={UnitHeight / 2 - ShapeHeight / 2}
           />
+
           <use
             href="#cul3_2"
             x={UnitWidth + Gap + UnitWidth / 2 - ShapeWidth / 2}
@@ -52,6 +60,7 @@ export default function Cul32Page() {
         height={svgProps.height}
         fill="url(#cul3_2_p)"
       />
-    </svg>
+    </SVG>
   )
 }
+export default Square32
