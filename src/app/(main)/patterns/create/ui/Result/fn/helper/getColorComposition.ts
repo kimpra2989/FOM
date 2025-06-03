@@ -6,28 +6,7 @@ type HexColor = {
   b: number
 }
 
-function processResult(answer: number[]) {
-  // color
-  const r = answer.slice(2, 5)
-  const g = answer.slice(7, 10)
-  const b = answer.slice(12, 15)
-  const colors = processColor(r, g, b)
-
-  // shape
-  const shape1 = answer.slice(0, 2)
-  const shape2 = answer.slice(5, 7)
-  const shape3 = answer.slice(10, 12)
-  const shapes = [shape1, shape2, shape3]
-
-  return {
-    colors,
-    shapes,
-  }
-}
-
-export default processResult
-
-export function processColor(r: number[], g: number[], b: number[]) {
+function getColorComposition(r: number[], g: number[], b: number[]) {
   const [rMain, r1, r2] = r
   const [gMain, g1, g2] = g
   const [bMain, b1, b2] = b
@@ -94,6 +73,8 @@ export function processColor(r: number[], g: number[], b: number[]) {
 
   return res
 }
+
+export default getColorComposition
 
 function toHex(colorData: Color, mainIdx: number) {
   const result = [0, 0, 0]
