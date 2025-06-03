@@ -1,9 +1,12 @@
 import { useMemo } from 'react'
+import { svgProps } from '../constants'
 
 export default function Exp11Page() {
-  const Rows = 10
-  const Cols = 10
-  const Spacing = 10
+  const Width = 20
+  const Height = 20
+  const Rows = Math.ceil(svgProps.width / Width)
+  const Cols = Math.ceil(svgProps.height / Height)
+  const Spacing = Width / 2
   const points = useMemo(
     () =>
       Array.from({ length: Rows + 1 }, (_, row) =>
@@ -13,47 +16,38 @@ export default function Exp11Page() {
           angle: Math.floor(Math.random() * 4) * 90,
         }))
       ),
-    []
+    [Rows, Cols, Spacing]
   )
 
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="300"
-      height="300"
-      viewBox="0 0 100 100"
-    >
+    <svg {...svgProps}>
       <defs>
         <g id="exp1_1">
           <path
-            d="M 0 -10
+            d={`M 0 -${Width / 2}
              L 0 0
-             L 10 0
-             A 10 10 0 0 0 0 -10"
+             L ${Width / 2} 0
+             A ${Width / 2} ${Width / 2} 0 0 0 0 -${Width / 2}`}
             opacity="0.2"
-            fill="black"
           />
           <path
-            d="M 0 -10
+            d={`M 0 -${Width / 2}
              L 0 0
-             L -10 0
-             A 10 10 0 0 1 0 -10"
+             L -${Width / 2} 0
+             A ${Width / 2} ${Width / 2} 0 0 1 0 -${Width / 2}`}
             opacity="0.4"
-            fill="black"
           />
           <path
-            d="M 0 10
+            d={`M 0 ${Width / 2}
              L 0 0
-             L -10 0
-             A 10 10 0 0 0 0 10"
-            fill="black"
+             L -${Width / 2} 0
+             A ${Width / 2} ${Width / 2} 0 0 0 0 ${Width / 2}`}
           />
           <path
-            d="M 0 10
+            d={`M 0 ${Width / 2}
              L 0 0
-             L 10 0
-             A 10 10 0 0 1 0 10"
-            fill="black"
+             L ${Width / 2} 0
+             A ${Width / 2} ${Width / 2} 0 0 1 0 ${Width / 2}`}
             opacity="0"
           />
         </g>
