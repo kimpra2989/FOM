@@ -1,5 +1,5 @@
 import { Slider } from '#/ui'
-import { ChangeEventHandler, FC, MouseEventHandler, useRef } from 'react'
+import { ChangeEventHandler, FC, MouseEventHandler } from 'react'
 import { CarouselHookReturnType } from '../../hooks/useCarousel'
 
 import {
@@ -20,6 +20,7 @@ interface Props extends CommonQuestionType {
   setAnswer: (value: number) => void
   color?: QuestionColorType
   sliderValue?: number
+  currentSlideIdx: number
 }
 
 const Question: FC<Props> = ({
@@ -29,6 +30,7 @@ const Question: FC<Props> = ({
   setAnswer,
   scrollNext,
   sliderValue,
+  currentSlideIdx,
 }) => {
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setAnswer(+e.target.value)
@@ -39,8 +41,6 @@ const Question: FC<Props> = ({
     setAnswer(+e.currentTarget.value)
     scrollNext()
   }
-
-  const sliderIdx = useRef(0)
 
   const commonSliderProps = {
     onMouseUp: handleMouseUp,
@@ -58,7 +58,7 @@ const Question: FC<Props> = ({
           color={color}
           onChange={handleChange}
         />
-      ) : sliderIdx.current++ % 3 === 0 ? (
+      ) : currentSlideIdx % 5 === 2 ? (
         <Slider max={255} {...commonSliderProps} />
       ) : (
         <Slider max={254 * 3} {...commonSliderProps} />

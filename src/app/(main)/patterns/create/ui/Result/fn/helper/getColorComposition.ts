@@ -1,19 +1,17 @@
 type Color = number[]
 type HexColor = {
   color: string
-  r: number
-  g: number
-  b: number
+  hex: string
 }
 
 function getColorComposition(r: number[], g: number[], b: number[]) {
-  const [rMain, r1, r2] = r
-  const [gMain, g1, g2] = g
-  const [bMain, b1, b2] = b
+  const rMain = r[0]
+  const gMain = g[0]
+  const bMain = b[0]
 
-  const rHex = toHex(r, 0)
-  const gHex = toHex(g, 1)
-  const bHex = toHex(b, 2)
+  const rHex = InputtoHex(r, 0)
+  const gHex = InputtoHex(g, 1)
+  const bHex = InputtoHex(b, 2)
 
   const getHexPercent = (hex: number) => +(hex / 255).toFixed(3) * 100
 
@@ -42,32 +40,22 @@ function getColorComposition(r: number[], g: number[], b: number[]) {
   const res: HexColor[] = [
     {
       color: 'black',
-      r: ~~((rMain + g1 + b1) / 3),
-      g: ~~((r1 + gMain + b2) / 3),
-      b: ~~((r2 + g2 + bMain) / 3),
+      hex: averageHexColors([rHex, gHex, bHex]),
     },
   ]
 
   if (high.val - mid.val >= 14 && mid.val - low.val < 14) {
-    const [r, g, b] = high.hex
-    res.push({ color: high.color, r, g, b })
+    res.push({ color: high.color, hex: high.hex })
   } else if (mid.val - low.val >= 14 && high.val - mid.val < 14) {
-    const [hr, hg, hb] = high.hex
-    const [mr, mg, mb] = mid.hex
-
     res.push(
-      { color: high.color, r: hr, g: hg, b: hb },
-      { color: mid.color, r: mr, g: mg, b: mb }
+      { color: high.color, hex: high.hex },
+      { color: mid.color, hex: mid.hex }
     )
   } else {
-    const [hr, hg, hb] = high.hex
-    const [mr, mg, mb] = mid.hex
-    const [lr, lg, lb] = low.hex
-
     res.push(
-      { color: high.color, r: hr, g: hg, b: hb },
-      { color: mid.color, r: mr, g: mg, b: mb },
-      { color: low.color, r: lr, g: lg, b: lb }
+      { color: high.color, hex: high.hex },
+      { color: mid.color, hex: mid.hex },
+      { color: low.color, hex: low.hex }
     )
   }
 
@@ -76,7 +64,7 @@ function getColorComposition(r: number[], g: number[], b: number[]) {
 
 export default getColorComposition
 
-function toHex(colorData: Color, mainIdx: number) {
+function InputtoHex(colorData: Color, mainIdx: number) {
   const result = [0, 0, 0]
   const maxHex = colorData[0]
   result[mainIdx] = maxHex
@@ -101,5 +89,33 @@ function toHex(colorData: Color, mainIdx: number) {
     result[i] = ~~((Math.min(255, toAdd[i]) / 255) * maxHex)
   })
 
-  return result
+  return result.reduce((acc, colorHex) => acc + toHex(colorHex), '#')
+}
+
+const toHex = (n: number) => n.toString(16).padStart(2, '0')
+
+function averageHexColors(hexCodes: string[]): string {
+  const rgbValues = hexCodes.map((hex) => {
+    const cleaned = hex.replace('#', '')
+    const r = parseInt(cleaned.substring(0, 2), 16)
+    const g = parseInt(cleaned.substring(2, 4), 16)
+    const b = parseInt(cleaned.substring(4, 6), 16)
+    return [r, g, b]
+  })
+
+  const total = rgbValues.reduce(
+    (acc, [r, g, b]) => {
+      acc[0] += r
+      acc[1] += g
+      acc[2] += b
+      return acc
+    },
+    [0, 0, 0]
+  )
+
+  const len = rgbValues.length
+  const avg = total.map((v) => Math.round(v / len))
+
+  const toHex = (n: number) => n.toString(16).padStart(2, '0')
+  return `#${toHex(avg[0])}${toHex(avg[1])}${toHex(avg[2])}`
 }

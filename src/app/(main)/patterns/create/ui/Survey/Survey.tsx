@@ -29,6 +29,7 @@ const SurveyStep: FC<Props> = ({ questions, answer, setNthAnswer }) => {
               scrollNext={scrollNext}
               sliderValue={answer[idx]}
               {...question}
+              currentSlideIdx={currentSlideIdx}
               key={idx}
             />
           ))}
