@@ -27,9 +27,8 @@ export default function CharacterPage() {
           intensity={1}
           shadows={true}
         >
-          {/* <Character url={`/models/${model}.glb`} /> */}
           <Character
-            url={`https://pub-60bf2abb13364103818e899ac15c0e4b.r2.dev/${model}.glb`}
+            url={`${process.env.NEXT_PUBLIC_STORAGE_URL}/${model}.glb`}
           />
         </Stage>
         {/* <color attach="background" args={['#444']} />
