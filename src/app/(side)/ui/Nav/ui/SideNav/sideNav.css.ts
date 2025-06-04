@@ -7,12 +7,13 @@ export const container = recipe({
     position: 'fixed',
     top: 0,
     left: 0,
-    width: '144px',
+    width: '30%',
+    maxWidth: '500px',
     height: '100%',
     fontSize: '32px',
     zIndex: ZIndex.SIDEBAR,
-    background:
-      'linear-gradient(180deg, rgba(255, 255, 255, 0.13) 4.77%, rgba(255, 255, 255, 0.08) 28.39%, rgba(255, 255, 255, 0.21) 89.49%)',
+    backgroundColor: 'transparent',
+    backdropFilter: 'blur(2px)',
     color: 'white',
     transition: 'transform .1s ease-in',
 
@@ -41,6 +42,10 @@ export const logo = style({
   marginBottom: '34px',
 })
 
+export const imageStyle = style({
+  margin: '0 auto',
+})
+
 export const linkContainer = style({
   display: 'flex',
   flexDirection: 'column',
@@ -54,20 +59,14 @@ export const linkItem = recipe({
     lineHeight: '20px',
     fontWeight: Font.Weight.bold,
     padding: '0 20px',
-
-    selectors: {
-      '&:nth-child(4)': {
-        marginTop: '27px',
-        paddingTop: '5px',
-        paddingBottom: '5px',
-      },
-    },
   },
   variants: {
-    background: {
+    isActive: {
       active: {
         backgroundColor: Color.WHITE,
         color: '#141414',
+        textAlign: 'end',
+        marginRight: '20px',
       },
     },
   },

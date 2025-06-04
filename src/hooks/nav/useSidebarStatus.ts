@@ -13,7 +13,8 @@ function useSidebarStatus() {
       if (
         target instanceof HTMLElement &&
         (target.tagName === 'ASIDE' ||
-          target.closest('button[name="openSidebar"]'))
+          target.closest('button[name="openSidebar"]') ||
+          target.closest('aside'))
       ) {
         return
       }

@@ -7,12 +7,13 @@ export const container = recipe({
     position: 'fixed',
     top: 0,
     left: 0,
-    width: '300px',
+    width: '30%',
+    maxWidth: '500px',
     height: '100vh',
     color: 'white',
     fontSize: '32px',
-    background: 'rgba(0, 0, 0, 0.81)',
-    padding: '60px 20px 20px',
+    backgroundColor: 'rgb(0 0 0 / 30%)',
+    backdropFilter: 'blur(4px)',
     zIndex: ZIndex.SIDEBAR,
     transition: 'transform .1s ease-in',
 
@@ -30,6 +31,15 @@ export const container = recipe({
       },
     },
   },
+})
+
+export const logo = style({
+  display: 'block',
+  width: '24px',
+  height: '24px',
+  border: '0',
+  margin: '20px',
+  marginBottom: '34px',
 })
 
 export const linkItem = style({

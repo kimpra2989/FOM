@@ -26,5 +26,4 @@ export const asideOpenButton = style({
   width: '31px',
   height: '34px',
   border: '0',
-  zIndex: ZIndex.SIDEBAR,
 })
