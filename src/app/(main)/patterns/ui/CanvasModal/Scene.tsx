@@ -1,5 +1,5 @@
 import { useCharacter, useRenderTexture } from '#/hooks/canvas'
-import { Center, Environment, OrbitControls } from '@react-three/drei'
+import { Center, OrbitControls, Stage } from '@react-three/drei'
 import { FC } from 'react'
 
 interface Props {
@@ -7,17 +7,20 @@ interface Props {
 }
 
 const Scene: FC<Props> = ({ textureUrl }) => {
-  const { scene, nodes } = useCharacter(`${process.env.NEXT_PUBLIC_STORAGE_URL}/fom.glb`
-)
+  const { scene, nodes } = useCharacter(
+    `${process.env.NEXT_PUBLIC_STORAGE_URL}/fom.glb`
+  )
   const name = 'EAR003'
   useRenderTexture(nodes[name], textureUrl)
 
   return (
     <>
-      <OrbitControls enableRotate enablePan={false} />
-      <Environment preset="city" />
-      <ambientLight />
-      {/* <color attach="background" args={['#444']} /> */}
+      <Stage
+        environment="studio"
+        intensity={1}
+        shadows={true}
+      />
+      <OrbitControls enableRotate enablePan={false} minDistance={0.1} maxDistance={0.2} />
       <Center>
         <primitive object={scene} />
       </Center>
