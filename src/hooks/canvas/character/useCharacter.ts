@@ -5,6 +5,7 @@ import { LoopOnce } from 'three'
 const useCharacter = (modelUrl: string) => {
   const { animations, nodes, scene } = useGLTF(modelUrl)
   const { actions, names } = useAnimations(animations, scene)
+  // console.log('model', useGLTF(modelUrl))
 
   // animation
   const action = actions?.[names[0]]
