@@ -1,5 +1,6 @@
 'use client'
 
+import { useWindowSize } from '#/hooks'
 import { useCursor } from '#/hooks/canvas'
 import { fullScreen } from '#/styles/styles'
 import { Square } from '#/ui'
@@ -7,7 +8,6 @@ import { Circle, Triangle } from '#/ui/canvas'
 import Konva from 'konva'
 import { useEffect, useRef, useState } from 'react'
 import { Layer, Stage } from 'react-konva'
-import { ShapeFilter } from './ui'
 
 export default function Home() {
   // 도형 정보를 받아와서 필터 후 랜더
@@ -15,7 +15,7 @@ export default function Home() {
 
   return (
     <main>
-      <ShapeFilter />
+      {/* <ShapeFilter /> */}
       <ElasticGrid />
     </main>
   )
@@ -25,27 +25,28 @@ interface ShapeData {
   shape: string
   x: number
   y: number
+  imageIdx: number
 }
 
-const rowGap = 300
-const colGap = 250
+// const rowGap = 300
+// const colGap = 250
 
 // const NUMBER = 2000
+const pattern_count = 18
 
-const generateShapes = (): ShapeData[] => {
+const generateShapes = (rowGap: number, colGap: number): ShapeData[] => {
   const res: ShapeData[] = []
 
-  const Rows = 10
-  const Cols = 10
+  const Rows = 50
+  const Cols = 50
 
   for (let r = -Rows / 2; r < Rows / 2; r++) {
     for (let c = -Cols; c < Cols / 2; c++) {
-      const idx = r * Rows + c
-
       res.push({
-        shape: ['triangle', 'square', 'circle'][idx % 3],
+        shape: ['triangle', 'square', 'circle'][Math.floor(Math.random() * 3)],
         x: r * rowGap,
         y: c * colGap,
+        imageIdx: Math.floor(Math.random() * (pattern_count + 1)),
       })
     }
   }
@@ -56,30 +57,31 @@ const generateShapes = (): ShapeData[] => {
 function ElasticGrid() {
   const stageRef = useRef<Konva.Stage>(null)
   const { cursor, handleMouseOut, handleMouseOver } = useCursor()
-
-  const [width, setWidth] = useState<number>(0)
-  const [height, setHeight] = useState<number>(0)
+  const { size } = useWindowSize()
+  const [shapes, setShapes] = useState<ShapeData[]>([])
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setWidth(window.innerWidth)
-      setHeight(window.innerHeight)
-    }
-  }, [])
+    setShapes(generateShapes(size.width / 5, size.height / 3))
+  }, [size.width, size.height])
 
   return (
     <Stage
       className={fullScreen}
-      width={width}
-      height={height}
+      width={size.width}
+      height={size.height}
       ref={stageRef}
       draggable
       style={{ cursor }}
     >
       <Layer>
-        {generateShapes().map((shape, idx) =>
+        {shapes.map((shape, idx) =>
           shape.shape === 'triangle' ? (
             <Triangle
+              imageUrl={
+                shape.imageIdx === pattern_count
+                  ? undefined
+                  : `/patterns/pattern${shape.imageIdx}.svg`
+              }
               key={idx}
               x={shape.x}
               y={shape.y}
@@ -88,6 +90,11 @@ function ElasticGrid() {
             />
           ) : shape.shape === 'circle' ? (
             <Circle
+              imageUrl={
+                shape.imageIdx === pattern_count
+                  ? undefined
+                  : `/patterns/pattern${shape.imageIdx}.svg`
+              }
               key={idx}
               x={shape.x}
               y={shape.y}
@@ -96,6 +103,11 @@ function ElasticGrid() {
             />
           ) : (
             <Square
+              imageUrl={
+                shape.imageIdx === pattern_count
+                  ? undefined
+                  : `/patterns/pattern${shape.imageIdx}.svg`
+              }
               key={idx}
               x={shape.x}
               y={shape.y}
