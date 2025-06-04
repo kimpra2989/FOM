@@ -1,5 +1,12 @@
 import { Color, NavHeight } from '#/styles'
-import { globalStyle } from '@vanilla-extract/css'
+import { globalFontFace, globalStyle } from '@vanilla-extract/css'
+
+globalFontFace('Pretendard Variable', {
+  src: 'url(/fonts/PretendardVariable.woff2) format("woff2")',
+  fontWeight: '200 800',
+  fontStyle: 'normal',
+  fontDisplay: 'swap',
+})
 
 globalStyle('html, body', {
   margin: 0,
@@ -10,6 +17,7 @@ globalStyle('html, body', {
   overflowX: 'hidden',
   color: Color.WHITE,
   backgroundColor: Color.BLACK,
+  fontFamily: `'Pretendard Variable', sans-serif`,
 })
 
 globalStyle('body', {
