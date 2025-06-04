@@ -1,9 +1,10 @@
 import { ComponentPropsWithRef } from 'react'
-import { container } from './slider.css'
+import { answerContainer, container, labelStyle, range } from './slider.css'
 
 interface Props extends ComponentPropsWithRef<'input'> {
   step?: number
   label?: string
+  answers?: string[]
 }
 
 const Slider: React.FC<Props> = ({
@@ -14,11 +15,13 @@ const Slider: React.FC<Props> = ({
   value,
   onChange,
   label,
+  answers,
   ...props
 }) => {
   return (
     <div className={container}>
-      {label && <label>{label}</label>}
+      {label && <label className={labelStyle}>{label}</label>}
+
       <input
         ref={ref}
         type="range"
@@ -27,9 +30,15 @@ const Slider: React.FC<Props> = ({
         step={step}
         value={value}
         onChange={onChange}
+        className={range}
         {...props}
       />
-      <span style={{ width: '20px', height: '20px' }}>{value}</span>
+
+      <div className={answerContainer}>
+        {answers?.map((answer) => (
+          <p className={answer} key={answer}>{answer}</p>
+        ))}
+      </div>
     </div>
   )
 }

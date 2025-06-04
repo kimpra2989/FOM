@@ -47,6 +47,7 @@ const Question: FC<Props> = ({
     min: 0,
     label: question,
     value: sliderValue,
+    answers,
   }
 
   return (
