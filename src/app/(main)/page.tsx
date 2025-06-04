@@ -8,6 +8,7 @@ import { Circle, Triangle } from '#/ui/canvas'
 import Konva from 'konva'
 import { useEffect, useRef, useState } from 'react'
 import { Layer, Stage } from 'react-konva'
+import { ProjectIntroduction } from './ui'
 
 export default function Home() {
   // 도형 정보를 받아와서 필터 후 랜더
@@ -17,6 +18,7 @@ export default function Home() {
     <main>
       {/* <ShapeFilter /> */}
       <ElasticGrid />
+      <ProjectIntroduction />
     </main>
   )
 }
