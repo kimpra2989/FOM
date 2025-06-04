@@ -12,7 +12,16 @@ interface Props extends Omit<ImageConfig, 'image'> {
 const InnerImage: FC<Props> = ({ x, y, imageUrl, ...props }) => {
   const [innerImage] = useImage(imageUrl)
 
-  return <Image x={x} y={y} image={innerImage} alt="pattern image" {...props} />
+  return (
+    <Image
+      x={x}
+      y={y}
+      image={innerImage}
+      alt="pattern image"
+      scale={{x : 1.5, y : 1.5}}
+      {...props}
+    />
+  )
 }
 
 export default InnerImage

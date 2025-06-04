@@ -1,4 +1,4 @@
-import { useRouter } from 'next/navigation'
+import { useRoute } from '#/hooks'
 import { FC } from 'react'
 import { Group, RegularPolygon } from 'react-konva'
 import { BasePropsType, Image, Text } from '../base'
@@ -15,7 +15,8 @@ const TriangleShape: FC<Props> = ({
 }) => {
   const R = Shape.triangle.r
   const len = R * Math.sin(Math.PI / 3)
-  const router = useRouter()
+
+  const { goto } = useRoute()
 
   const sharedProps = {
     onMouseOver: handleMouseOver,
@@ -33,24 +34,13 @@ const TriangleShape: FC<Props> = ({
         ctx.lineTo(-len, R * Math.cos(Math.PI / 3))
         ctx.closePath()
       }}
+      onClick={goto('/patterns')}
       {...sharedProps}
     >
-      <Image
-        x={-len}
-        y={-R}
-        imageUrl={imageUrl}
-        width={2 * len}
-        height={(3 * R) / 2}
-        alt="pattern image"
-      />
+      <Image x={-len} y={-R} imageUrl={imageUrl} alt="pattern image" />
     </Group>
   ) : (
-    <Group
-      x={x}
-      y={y}
-      onClick={() => router.push('/patterns/create')}
-      {...sharedProps}
-    >
+    <Group x={x} y={y} onClick={goto('/patterns/create')} {...sharedProps}>
       <RegularPolygon radius={R} stroke="white" sides={3} strokeWidth={1} />
       <Text x={-R} y={-R} width={R * 2} height={R * 2} />
     </Group>

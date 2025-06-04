@@ -1,3 +1,4 @@
+import { useRoute } from '#/hooks'
 import { FC } from 'react'
 import { Group, Rect } from 'react-konva'
 import { BasePropsType, Image, Text } from '../base'
@@ -21,17 +22,35 @@ const Square: FC<Props> = ({
     onMouseOut: handleMouseOut,
   }
 
+  const { goto } = useRoute()
+
   return imageUrl ? (
-    <Image
-      offset={{ x: len / 2, y: len / 2 }}
-      width={len}
-      height={len}
-      imageUrl={imageUrl}
-      alt="pattern image"
+    <Group
       {...sharedProps}
-    />
+      clipFunc={(ctx) => {
+        ctx.beginPath()
+        ctx.moveTo(0, 0)
+        ctx.lineTo(len, 0)
+        ctx.lineTo(len, len)
+        ctx.lineTo(0, len)
+        ctx.closePath()
+      }}
+      onClick={goto('/patterns')}
+    >
+      <Image
+        x={0}
+        y={0}
+        offset={{ x: len / 2, y: len / 2 }}
+        imageUrl={imageUrl}
+        alt="pattern image"
+      />
+    </Group>
   ) : (
-    <Group offset={{ x: len / 2, y: len / 2 }} {...sharedProps}>
+    <Group
+      offset={{ x: len / 2, y: len / 2 }}
+      {...sharedProps}
+      onClick={goto('/patterns/create')}
+    >
       <Rect width={len} height={len} stroke="white" strokeWidth={1} />
       <Text width={len} height={len} />
     </Group>
