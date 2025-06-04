@@ -32,22 +32,33 @@ export const buttons = style({
 
 export const container = style({
   display: 'flex',
-  justifyContent: 'space-around',
-  padding: '100px 200px',
+  justifyContent: 'space-between',
+  padding: '0 50px',
   gap: '20px',
 })
 
 export const left = style({
-  display: 'flex',
-  flexWrap: 'nowrap',
+  display: 'grid',
+  gridTemplateColumns: 'repeat(2, 1fr)',
   gap: '20px',
 })
 
-export const colorBox = style([
+export const leftTitle = style({
+  fontWeight: 'bold',
+  fontSize: '24px',
+  // marginBottom: '30px',
+  textAlign: 'center',
+  marginBottom: '50px',
+})
+
+export const patternBox = style([
   flexCenter,
   {
-    width: '100px',
-    height: '100px',
-    border: '1px solid white',
+    flexDirection: 'column',
+    gap: '20px',
   },
 ])
+
+export const right = style({
+  backgroundColor: 'transparent',
+})
