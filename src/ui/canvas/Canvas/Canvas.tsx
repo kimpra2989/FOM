@@ -1,48 +1,33 @@
 'use client'
+import { useWindowSize } from '#/hooks'
 import { Canvas, CanvasProps } from '@react-three/fiber'
-import { CSSProperties, FC, ReactNode, useEffect, useState } from 'react'
+import { CSSProperties, FC, ReactNode } from 'react'
 
 interface Props extends CanvasProps {
-  cameraPos?: [number, number, number]
   children?: ReactNode
   className?: string
   styles?: CSSProperties
 }
 
 const CanvasWrapper: FC<Props> = ({
-  cameraPos = [0, 0, 0.18],
   children,
   className,
   styles,
   ...props
 }) => {
-  const [width, setWidth] = useState<number>(0)
-  const [height, setHeight] = useState<number>(0)
+  const { size } = useWindowSize()
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setWidth(window.innerWidth)
-      setHeight(window.innerHeight)
-    }
-  }, [])
-  
+  if (size.width === 0 || size.height === 0) return null
+
   return (
     <div
       className={className}
       style={{
-        ...{ width: `${width}px`, height: `${height - 60}px` },
+        ...{ width: `${size.width}px`, height: `${size.height - 60}px` },
         ...styles,
       }}
     >
-      <Canvas
-        camera={{
-          position: cameraPos,
-          aspect: width / (height - 60),
-        }}
-        {...props}
-      >
-        {children}
-      </Canvas>
+      <Canvas {...props}>{children}</Canvas>
     </div>
   )
 }

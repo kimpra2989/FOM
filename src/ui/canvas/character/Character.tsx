@@ -1,13 +1,13 @@
-import { Center, Gltf, useAnimations, useGLTF } from '@react-three/drei'
-import { FC, Ref, useEffect } from 'react'
-import { Group, LoopOnce } from 'three'
+import { useAnimations, useGLTF } from '@react-three/drei'
+import { FC, useEffect } from 'react'
+import { LoopOnce } from 'three'
 
 interface Props {
   url: string
 }
 
 const Character: FC<Props> = ({ url }) => {
-  const { animations } = useGLTF(url)
+  const { animations, scene } = useGLTF(url)
   const { ref, actions, names } = useAnimations(animations)
 
   useEffect(() => {
@@ -18,11 +18,7 @@ const Character: FC<Props> = ({ url }) => {
     action?.play()
   })
 
-  return (
-    <Center>
-      <Gltf src={url} ref={ref as Ref<Group>} />
-    </Center>
-  )
+  return <primitive ref={ref} object={scene} />
 }
 
 export default Character
