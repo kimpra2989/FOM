@@ -11,7 +11,7 @@ export default function PatternPage() {
   const nextPattern = async () => {
     setIsSwitching(true)
     setTimeout(() => {
-      setPatternIdx((prev) => (prev + 1) % 4)
+      setPatternIdx((prev) => (prev + 1) % 18)
       setIsSwitching(false)
     }, 500)
   }
@@ -31,7 +31,8 @@ export default function PatternPage() {
           <motion.div
             className={background}
             style={{
-              backgroundImage: `url(/pattern${patternIdx}.png)`,
+              backgroundImage: `url(/patterns/pattern${patternIdx}.svg)`,
+              backgroundSize: '80%',
               zIndex: 3,
             }}
             initial={{ opacity: 1 }}
@@ -42,9 +43,10 @@ export default function PatternPage() {
         <motion.div
           className={background}
           style={{
-            backgroundImage: `url(/pattern${
+            backgroundImage: `url(/patterns/pattern${
               (patternIdx + (isSwitching ? 1 : 0)) % 4
-            }.png)`,
+            }.svg)`,
+            backgroundSize: '80%',
           }}
         />
         {!open && (
@@ -67,7 +69,7 @@ export default function PatternPage() {
         <CanvasModal
           closeModal={closeModal}
           nextPattern={nextPattern}
-          textureUrl={`/pattern${patternIdx}.png`}
+          textureUrl={`/patterns/pattern${patternIdx}.svg`}
         />
       )}
     </>
