@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="297" height="210" viewBox="0 0 297 210"><rect width="297" height="210" fill="white"></rect><rect width="297" height="210" fill="#066200" opacity="0.8"></rect><defs><g id="per1_3"><path d="M 0 0
-                L 8.5 20
-                L 0 40
-                Z"></path><path d="M 17 0
-                L 8.5 20
-                L 17 40
-                Z"></path></g></defs><defs><pattern id="per2_3_p" width="34" height="80" patternUnits="userSpaceOnUse"><use href="#per1_3"></use><use href="#per1_3" x="17" y="40"></use></pattern></defs><g transform-origin="222.75 157.5" transform="rotate(23) 
-        translate(-51, -20)
-        "><rect width="445.5" height="315" fill="url(#per2_3_p)"></rect></g></svg>
