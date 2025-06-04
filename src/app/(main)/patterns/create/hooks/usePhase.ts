@@ -10,7 +10,7 @@ const useStep = () => {
 
     setTimeout(() => {
       setPhase('result')
-    }, 3000)
+    }, 4000)
   }
 
   return {

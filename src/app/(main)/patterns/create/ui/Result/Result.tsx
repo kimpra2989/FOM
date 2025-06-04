@@ -27,7 +27,7 @@ const ResultStep: FC<Props> = ({ answer }) => {
                 <BasePattern
                   color={color.color}
                   hex={color.hex}
-                  shape={shapes[color.color]}
+                  shape={shapes[(color.color as 'red' | 'green' | 'blue')]}
                   key={color.color}
                 />
               )
