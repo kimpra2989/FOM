@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="297" height="210" viewBox="0 0 297 210"><rect width="297" height="210" fill="white"></rect><rect width="297" height="210" fill="#153f5a" opacity="0.8"></rect><defs><g id="cul1_1"><path d="M 10 0 
+                L 20 10
+                L 10 20
+                L 0 10
+                Z"></path></g></defs><defs><pattern id="cul1_1_p" width="50" height="20" patternUnits="userSpaceOnUse"><use href="#cul1_1"></use><use href="#cul1_1" x="10"></use><use href="#cul1_1" x="30"></use></pattern></defs><rect width="297" height="210" fill="url(#cul1_1_p)"></rect></svg>

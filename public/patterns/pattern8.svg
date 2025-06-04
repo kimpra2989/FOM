@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="297" height="210" viewBox="0 0 297 210"><rect width="297" height="210" fill="white"></rect><rect width="297" height="210" fill="#0000ff" opacity="0.8"></rect><defs><g id="cul1_2"><path d="
+              M 20 0
+              v 10
+              L 0 20
+              v -10
+              Z"></path></g></defs><defs><pattern id="cul1_2_p" width="20" height="20" viewBox="0 10 20 20" patternUnits="userSpaceOnUse"><use href="#cul1_2"></use><use href="#cul1_2" y="10" opacity="0.51"></use><use href="#cul1_2" y="20"></use></pattern></defs><rect width="297" height="210" fill="url(#cul1_2_p)"></rect></svg>
